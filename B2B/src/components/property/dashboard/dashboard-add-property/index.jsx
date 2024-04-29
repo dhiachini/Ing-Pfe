@@ -6,11 +6,15 @@ import DetailsFiled from "./details-field";
 import Amenities from "./Amenities";
 
 const AddPropertyTabContent = () => {
-  const [s,setS] = useState (0)
-  const n =() => {setS(s+1)}
-  const f =() =>{setS(0)}
-  const [m,setM] = useState(0)
-  const [e,setE] = useState(0)
+  const [s, setS] = useState(0);
+  const n = () => {
+    setS(s + 1);
+  };
+  const f = () => {
+    setS(0);
+  };
+  const [m, setM] = useState(0);
+  const [e, setE] = useState(0);
   return (
     <>
       <nav>
@@ -25,9 +29,9 @@ const AddPropertyTabContent = () => {
             aria-controls="nav-item1"
             aria-selected="true"
           >
-            1. Description
+            1. Description 0002
           </button>
-          <button 
+          <button
             className="nav-link fw600"
             id="nav-item2-tab"
             data-bs-toggle="tab"
@@ -36,7 +40,7 @@ const AddPropertyTabContent = () => {
             role="tab"
             aria-controls="nav-item2"
             aria-selected="false"
-            disabled= {s=== 0 ? true : false} 
+            disabled={s === 0 ? true : false}
           >
             2. Media
           </button>
@@ -49,7 +53,7 @@ const AddPropertyTabContent = () => {
             role="tab"
             aria-controls="nav-item3"
             aria-selected="false"
-            disabled= {m=== 0? true : false} 
+            disabled={m === 0 ? true : false}
           >
             3. Emplacement
           </button>
@@ -101,7 +105,7 @@ const AddPropertyTabContent = () => {
           role="tabpanel"
           aria-labelledby="nav-item2-tab"
         >
-          <UploadMedia m={m} setM={setM}/>
+          <UploadMedia m={m} setM={setM} />
         </div>
         {/* End tab for Upload photos of your property */}
 
