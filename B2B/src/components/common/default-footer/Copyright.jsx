@@ -7,15 +7,15 @@ const getCurrentYear = () => {
 const Footer = () => {
   const footerMenuItems = [
     {
-      label: "Privacy",
+      label: "Confidentialité",
       link: "#",
     },
     {
-      label: "Terms",
+      label: "Conditions",
       link: "#",
     },
     {
-      label: "Sitemap",
+      label: "Plan du site",
       link: "#",
     },
   ];
@@ -26,16 +26,16 @@ const Footer = () => {
         <div className="col-sm-6">
           <div className="text-center text-lg-start">
             <p className="copyright-text text-gray ff-heading">
-              © Homez {getCurrentYear()}{" "}
+              © ALGÉTUN {getCurrentYear()}{" "}
               <a
-                href="https://themeforest.net/user/ib-themes"
+                href="https://yooreed.tn/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white"
               >
-                ib-themes
+                YooReed
               </a>{" "}
-              - All rights reserved
+              - Tous droits réservés
             </p>
           </div>
         </div>

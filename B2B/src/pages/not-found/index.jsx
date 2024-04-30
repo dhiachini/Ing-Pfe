@@ -1,10 +1,9 @@
-import DefaultHeader from "@/components/common/DefaultHeader";
+import DashboardHeader from "@/components/common/DashboardHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 
 import { Link } from "react-router-dom";
 import React from "react";
-
 
 import MetaData from "@/components/common/MetaData";
 
@@ -15,9 +14,9 @@ const metaInformation = {
 const NotFound = () => {
   return (
     <>
-    <MetaData meta={metaInformation} />
+      <MetaData meta={metaInformation} />
       {/* Main Header Nav */}
-      <DefaultHeader />
+      <DashboardHeader />
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}
@@ -32,7 +31,6 @@ const NotFound = () => {
               <div className="animate_content text-center text-xl-start">
                 <div className="animate_thumb">
                   <img
-                  
                     className="w-100 h-100 cover"
                     src="/images/icon/error-page-img.svg"
                     alt="error-page-img"
@@ -51,15 +49,14 @@ const NotFound = () => {
                   <span className="text-thm">40</span>4
                 </div>
                 <div className="h2 error_title">
-                  Oops! It looks like you&apos;re lost.
+                  Oops! On dirait que tu es perdu.
                 </div>
                 <p className="text fz15 mb20">
-                  The page you&apos;re looking for isn&apos;t available. Try to
-                  search again <br className="d-none d-lg-block" /> or use the
-                  go to.
+                  La page que vous recherchez n'est pas disponible. Essayez de
+                  chercher à nouveau ou utilisez le rendez-vous.
                 </p>
                 <Link to="/" className="ud-btn btn-dark">
-                  Go Back To Homepages
+                  Retourner aux pages d'accueil
                   <i className="fal fa-arrow-right-long" />
                 </Link>
               </div>

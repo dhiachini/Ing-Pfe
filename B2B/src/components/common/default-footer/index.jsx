@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import ContactMeta from "./ContactMeta";
 import AppWidget from "./AppWidget";
@@ -15,17 +14,14 @@ const Footer = () => {
           <div className="col-lg-5">
             <div className="footer-widget mb-4 mb-lg-5">
               <Link className="footer-logo" to="/">
-                <img
-                 
-                  className="mb40"
-                  src="/images/header-logo.svg"
-                  alt=""
-                />
+                <img className="mb40" src="/images/footer-logo.png" alt="" />
               </Link>
               <ContactMeta />
               <AppWidget />
               <div className="social-widget">
-                <h6 className="text-white mb20">Follow us on social media</h6>
+                <h6 className="text-white mb20">
+                  Suivez-nous sur les réseaux sociaux
+                </h6>
                 <Social />
               </div>
             </div>

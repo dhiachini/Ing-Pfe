@@ -1,16 +1,10 @@
-import Footer from "@/components/home/home-v9/footer";
+import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 import Header from "@/components/home/home-v9/Header";
-import Partner from "@/components/common/Partner";
 import PropertiesByCities from "@/components/home/home-v1/PropertiesByCities";
 import Testimonial from "@/components/home/home-v3/Testimonial";
 import Funfact from "@/components/home/home-v3/Funfact";
 import Hero from "@/components/home/home-v9/Hero";
-import ApartmentType from "@/components/home/home-v1/ApartmentType";
-import { Link } from "react-router-dom";
-import SellingBlock from "../../../components/home/home-v9/SellingBlock";
-import About from "@/components/home/home-v9/about";
-import Pricing from "@/components/home/home-v9/Pricing";
 import Cta from "@/components/home/home-v6/Cta";
 import Explore from "@/components/home/home-v2/Explore";
 import MetaData from "@/components/common/MetaData";
@@ -115,9 +109,7 @@ const Home_V9 = () => {
             >
               <div className="main-title">
                 <h2 className="title">Les gens aiment échanger avec AlgéTun</h2>
-                <p className="paragraph">
-                  Vivez leurs expérience
-                </p>
+                <p className="paragraph">Vivez leurs expérience</p>
               </div>
               <div className="row">
                 <Funfact />
@@ -296,7 +288,7 @@ const Home_V9 = () => {
       {/* Our End CTA */}
 
       {/* Start Our Footer */}
-      <section className="footer-style1 at-home4 pt60 pb-0">
+      <section className="footer-style1 pt60 pb-0">
         <Footer />
       </section>
       {/* End Our Footer */}

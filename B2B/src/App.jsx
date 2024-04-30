@@ -67,9 +67,9 @@ import AgentSingle from "./pages/property/(agents)/agent-single";
 import AgencySingle from "./pages/property/(agents)/agency-single";
 import ListV1 from "./pages/listings/(list-view)/list-v1";
 import ScrollTopBehaviour from "./components/common/ScrollTopBehaviour";
-import Navbar from "./P213216/components/navbar/Navbar.jsx";
+
 import Listetextesjuridique from "./components/home/home-v9/juridique/Listetextesjuridique";
-import Listeconseilsjuridique from "./components/home/home-v9/juridique/Listeconseilsjuridique"; 
+import Listeconseilsjuridique from "./components/home/home-v9/juridique/Listeconseilsjuridique";
 import Allcategories from "./components/home/home-v9/Allcategories";
 import Offres from "./components/home/home-v9/Offres";
 import AjouterOffres from "./components/home/home-v9/AjouterOffres";
@@ -79,7 +79,6 @@ import AjouterDemandes from "./components/home/home-v9/AjouterDemandes";
 import MyDemandes from "./components/home/home-v9/MyDemandes";
 import OfferDetails from "./components/home/home-v9/OfferDetails";
 import Demandes from "./components/home/home-v9/demandes";
-
 
 if (typeof window !== "undefined") {
   import("bootstrap");
@@ -111,22 +110,24 @@ function App() {
               <Route path="home-v8" element={<Home_V8 />} />
               <Route path="home-v9" element={<Home_V9 />} />
               <Route path="home-v10" element={<Home_V10 />} />
-              <Route path="listetextesjuridique" element={<Listetextesjuridique />} />
-              <Route path="listeconseilsjuridique" element={<Listeconseilsjuridique />} />
+              <Route
+                path="listetextesjuridique"
+                element={<Listetextesjuridique />}
+              />
+              <Route
+                path="listeconseilsjuridique"
+                element={<Listeconseilsjuridique />}
+              />
               <Route path="categories" element={<Allcategories />} />
               <Route path="categoriesdemande" element={<CategoriesDemande />} />
 
               <Route path="offres" element={<Offres />} />
               <Route path="ajouteroffres" element={<AjouterOffres />} />
-              <Route path="mesoffres" element={<MyOffers />}/>
-              <Route path="ajouterdemandes" element={<AjouterDemandes />}/>
-              <Route path="mesdemandes" element={<MyDemandes/>}/>
-              <Route path="detailsoffre" element={<OfferDetails/>}/>
+              <Route path="mesoffres" element={<MyOffers />} />
+              <Route path="ajouterdemandes" element={<AjouterDemandes />} />
+              <Route path="mesdemandes" element={<MyDemandes />} />
+              <Route path="detailsoffre" element={<OfferDetails />} />
               <Route path="demandes" element={<Demandes />} />
-
-
-
-
 
               <Route path="grid-default" element={<GridDefault />} />
               <Route path="grid-full-3-col" element={<GridFull3Col />} />
@@ -147,7 +148,7 @@ function App() {
 
               <Route path="dashboard-home" element={<DashboardHome />} />
               <Route path="dashboard-message" element={<DashboardMessage />} />
-              <Route path="dhia" element={<Navbar />} />
+
               <Route
                 path="dashboard-add-property"
                 element={<DashboardAddProperty />}

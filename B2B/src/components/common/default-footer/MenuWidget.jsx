@@ -3,33 +3,28 @@ import React from "react";
 const MenuWidget = () => {
   const menuSections = [
     {
-      title: "Popular Search",
+      title: "Recherche populaire",
       links: [
-        { label: "Apartment for Rent", href: "#" },
-        { label: "Apartment Low to Hide", href: "#" },
-        { label: "Offices for Buy", href: "#" },
-        { label: "Offices for Rent", href: "#" },
+        { label: "Terrain à vendre", href: "#" },
+        { label: "Matériaux", href: "#" },
+        { label: "Local à louer", href: "#" },
+        { label: "Voiture commercial", href: "#" },
       ],
     },
     {
-      title: "Quick Links",
+      title: "Liens rapides",
       links: [
-        { label: "Terms of Use", href: "#" },
-        { label: "Privacy Policy", href: "#" },
-        { label: "Pricing Plans", href: "#" },
-        { label: "Our Services", href: "#" },
-        { label: "Contact Support", href: "#" },
-        { label: "Careers", href: "#" },
-        { label: "FAQs", href: "#" },
+        { label: "Trouver-nous", href: "/contact" },
+        { label: "FAQs", href: "/Faq" },
       ],
     },
     {
-      title: "Discover",
+      title: "Découvrir",
       links: [
-        { label: "Miami", href: "#" },
-        { label: "Los Angeles", href: "#" },
-        { label: "Chicago", href: "#" },
-        { label: "New York", href: "#" },
+        { label: "Offres", href: "/offres" },
+        { label: "Demandes", href: "/demandes" },
+        { label: "Investissement", href: "#" },
+        
       ],
     },
   ];

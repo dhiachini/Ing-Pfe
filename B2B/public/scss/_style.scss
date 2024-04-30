@@ -221,7 +221,7 @@ li {
 
 /* All Type Of Footer Styles */
 .footer-style1 {
-    background-color: var(--headings-color);
+    background-color:#001544;
 }
 .footer-style1.at-home2 {
     padding-top: 230px;
@@ -307,7 +307,7 @@ li {
     background-color: rgba(255, 255, 255, 0.04);
     border: none;
     border-radius: 12px;
-    color: #ffffff;
+    color: #eb6753;
     font-size: 14px;
     font-weight: 400;
     height: 70px;
@@ -4957,7 +4957,7 @@ section {
 }
 
 .error_page_content .erro_code {
-    color: var(--headings-color);
+    color: #001544;
     font-family: var(--title-font-family);
     font-weight: 600;
     line-height: 289px;
@@ -6696,7 +6696,7 @@ textarea:focus {
 }
 
 .btn-dark {
-    background-color: var(--headings-color);
+    background-color: #001544;
     border: 1px solid var(--headings-color);
     color: #ffffff;
 }
@@ -9601,7 +9601,7 @@ input:focus-visible {
 
 .selection input[type="radio"]:checked ~ label {
     border: 2px solid #181a20;
-    outlinie: transparent;
+    outline: transparent;
     z-index: 1;
 }
 
@@ -10038,7 +10038,9 @@ input:focus-visible {
 
 .text-white {
     color: #ffffff;
+    
 }
+
 
 .bgc-white {
     background-color: #ffffff;

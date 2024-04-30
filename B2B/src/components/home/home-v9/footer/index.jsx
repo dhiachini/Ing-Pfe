@@ -32,11 +32,11 @@ const Footer = () => {
         {/* End .row */}
 
         <div className="row">
-          {/* <div className="col-md-6">
+          <div className="col-md-6">
             <div className="row justify-content-between">
               <MenuWidget />
             </div>
-          </div> */}
+          </div>
           {/* End .col */}
 
           <div className="col-md-6 col-lg-4 offset-lg-2">

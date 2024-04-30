@@ -4,13 +4,13 @@ const AppWidget = () => {
   const appList = [
     {
       icon: "fab fa-apple fz30 text-white",
-      text: "Download on the",
+      text: "Télécharger sur",
       title: "Apple Store",
       link: "#",
     },
     {
       icon: "fab fa-google-play fz30 text-white",
-      text: "Get it on",
+      text: "Télécharger sur",
       title: "Google Play",
       link: "#",
     },
@@ -18,7 +18,7 @@ const AppWidget = () => {
 
   return (
     <div className="app-widget">
-      <h5 className="title text-white mb10">Apps</h5>
+      <h5 className="title text-white mb10">Application Mobile</h5>
       <div className="row mb-4 mb-lg-5">
         {appList.map((app, index) => (
           <div className="col-auto" key={index}>
