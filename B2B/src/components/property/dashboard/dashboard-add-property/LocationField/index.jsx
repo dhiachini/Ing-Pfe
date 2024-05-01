@@ -1,55 +1,27 @@
-import React from "react";
-import SelectMulitField from "./SelectMulitField";
+import React, { useState } from "react";
 import Map from "./Map";
 
 const LocationField = ({ n, f }) => {
+  // State to manage latitude and longitude values
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+
+  // Handler function to update latitude and longitude values
+  const handleLatitudeChange = (event) => {
+    setLatitude(event.target.value);
+  };
+
+  const handleLongitudeChange = (event) => {
+    setLongitude(event.target.value);
+  };
+
   return (
     <form className="form-style1">
       <div className="row">
-        {/* <div className="col-sm-12">
-          <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">
-              Address
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Your Name"
-            />
-          </div>
-        </div> */}
-        {/* End col-12 */}
-
-        {/* <SelectMulitField />
-
-        <div className="col-sm-6 col-xl-4">
-          <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">Zip</label>
-            <input type="text" className="form-control" />
-          </div>
-        </div> */}
-        {/* End col-4 */}
-        {/* 
-        <div className="col-sm-6 col-xl-4">
-          <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">
-              Neighborhood
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Neighborhood"
-            />
-          </div>
-        </div> */}
-        {/* End col-4 */}
-
         <div className="col-sm-12">
-          <Map />
+          <Map setLatInput={setLatitude} setLngInput={setLongitude} />
         </div>
-        {/* End col-12 */}
       </div>
-      {/* End .row */}
 
       <div className="row">
         <div className="col-sm-6 col-xl-4">
@@ -57,19 +29,31 @@ const LocationField = ({ n, f }) => {
             <label className="heading-color ff-heading fw600 mb10">
               Latitude
             </label>
-            <input type="text" className="form-control" />
+            {/* Input field for latitude */}
+            <input
+              type="text"
+              className="form-control"
+              value={latitude}
+              onChange={handleLatitudeChange}
+            />
           </div>
         </div>
-        {/* End .col-sm-6 */}
 
         <div className="col-sm-6 col-xl-4">
           <div className="mb30">
             <label className="heading-color ff-heading fw600 mb10">
               Longitude
             </label>
-            <input type="text" className="form-control" />
+            {/* Input field for longitude */}
+            <input
+              type="text"
+              className="form-control"
+              value={longitude}
+              onChange={handleLongitudeChange}
+            />
           </div>
         </div>
+
         <div className="col-sm-6 col-xl-4">
           <a
             href="/offres"
@@ -86,7 +70,6 @@ const LocationField = ({ n, f }) => {
           </a>
         </div>
       </div>
-      {/* End .row */}
     </form>
   );
 };
