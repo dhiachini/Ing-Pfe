@@ -10,7 +10,7 @@ function Map({ setLatInput, setLngInput }) {
   const marker = useRef(null);
   const [lng, setLng] = useState(9.5375); // Center longitude for Tunisia
   const [lat, setLat] = useState(33.8869); // Center latitude for Tunisia
-  const [zoom, setZoom] = useState(6);
+  const [zoom] = useState(6);
 
   useEffect(() => {
     map.current = new mapboxgl.Map({
@@ -39,7 +39,7 @@ function Map({ setLatInput, setLngInput }) {
 
   return (
     <div>
-      <div ref={mapContainer} style={{ height: "400px" ,borderRadius:"15px"}} />
+      <div ref={mapContainer} style={{ height: "400px"}} />
     </div>
   );
 }

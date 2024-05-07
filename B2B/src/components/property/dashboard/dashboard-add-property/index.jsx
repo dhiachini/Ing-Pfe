@@ -4,13 +4,18 @@ import UploadMedia from "./upload-media";
 import LocationField from "./LocationField";
 import DetailsFiled from "./details-field";
 import Amenities from "./Amenities";
+import "./element.css";
 
 const AddPropertyTabContent = () => {
-  const [s,setS] = useState (0)
-  const n =() => {setS(s+1)}
-  const f =() =>{setS(0)}
-  const [m,setM] = useState(0)
-  const [e,setE] = useState(0)
+  const [s, setS] = useState(0);
+  const n = () => {
+    setS(s + 1);
+  };
+  const f = () => {
+    setS(0);
+  };
+  const [m, setM] = useState(0);
+  const [e, setE] = useState(0);
   return (
     <>
       <nav>
@@ -27,7 +32,7 @@ const AddPropertyTabContent = () => {
           >
             1. Description
           </button>
-          <button 
+          <button
             className="nav-link fw600"
             id="nav-item2-tab"
             data-bs-toggle="tab"
@@ -36,7 +41,7 @@ const AddPropertyTabContent = () => {
             role="tab"
             aria-controls="nav-item2"
             aria-selected="false"
-            disabled= {s=== 0 ? true : false} 
+            disabled={s === 0 ? true : false}
           >
             2. Media
           </button>
@@ -49,7 +54,7 @@ const AddPropertyTabContent = () => {
             role="tab"
             aria-controls="nav-item3"
             aria-selected="false"
-            disabled= {m=== 0? true : false} 
+            disabled={m === 0 ? true : false}
           >
             3. Emplacement
           </button>
@@ -84,11 +89,12 @@ const AddPropertyTabContent = () => {
       <div className="tab-content" id="nav-tabContent">
         <div
           className="tab-pane fade show active"
+          style={{ padding: "80px !important" }}
           id="nav-item1"
           role="tabpanel"
           aria-labelledby="nav-item1-tab"
         >
-          <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
+          <div className="ps-widget bgc-white bdrs12 ele overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Description de l'offre</h4>
             <PropertyDescription s={s} n={n} f={f} />
           </div>
@@ -101,7 +107,7 @@ const AddPropertyTabContent = () => {
           role="tabpanel"
           aria-labelledby="nav-item2-tab"
         >
-          <UploadMedia m={m} setM={setM}/>
+          <UploadMedia m={m} setM={setM} />
         </div>
         {/* End tab for Upload photos of your property */}
 

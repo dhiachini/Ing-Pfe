@@ -6,11 +6,14 @@ const PropertyDescription = ({ s, n, f }) => {
   const catergoryOptions = [
     { value: "Agriculture", label: "Agriculture" },
     { value: "Vêtements et mode", label: "Vêtements et mode" },
-    {
-      value: "Construction et immobilier",
-      label: "Construction et immobilier",
-    },
+    { value: "Construction et immobilier",label: "Construction et immobilier",},
     { value: "Emballage et papier", label: "Emballage et papier" },
+    { value: "Construction et immobilier",label: "Construction et immobilier",
+    
+    },
+    { value: "Construction et immobilier",label: "Construction et immobilier",
+    
+    },
   ];
   const listedIn = [
     { value: "À vendre", label: "À vendre" },
@@ -35,6 +38,11 @@ const PropertyDescription = ({ s, n, f }) => {
           : undefined,
       };
     },
+    menu: (provided) => ({
+      ...provided,
+      maxHeight: "200px", // Adjust as needed
+      overflowY: "auto",
+    }),
   };
 
   const [form, setForm] = useState({
