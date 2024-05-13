@@ -15,7 +15,7 @@ const LocationField = ({ n, f }) => {
       </div>
       {/* End .row */}
 
-      <div className="row">
+      <div className="row" style={{ marginTop: "25px"}}>
         <div className="col-sm-6 col-xl-4">
           <div className="mb30">
             <label className="heading-color ff-heading fw600 mb10">
@@ -40,7 +40,7 @@ const LocationField = ({ n, f }) => {
             style={{
               display: "inline-block",
               marginTop: "70px",
-              marginLeft: "246px",
+              marginLeft: "160px",
             }}
           >
             <button type="button" className="btn ud-btn btn-thm">

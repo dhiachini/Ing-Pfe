@@ -27,7 +27,7 @@ const AjouterOffres = () => {
       {/* dashboard_content_wrapper */}
       <div className="dashboard_content_wrapper">
         <div className="dashboard dashboard_wrapper pr30 pr0-md">
-          {/* <SidebarDashboard /> */}
+          <SidebarDashboard />
           {/* End .dashboard__sidebar */}
 
           <div className="dashboard__main pl0-md">
@@ -52,7 +52,7 @@ const AjouterOffres = () => {
 
               <div className="row">
                 <div className="col-xl-12">
-                  <div className="ps-widget bgc-white bdrs12 default-box-shadow2 pt30 mb30 overflow-hidden position-relative">
+                  <div className="ps-widget bgc-white bdrs12 default-box-shadow2 mb30 overflow-hidden position-relative">
                     <div className="navtab-style1">
                       <AddPropertyTabContent />
                     </div>

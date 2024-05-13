@@ -302,6 +302,7 @@ const SignUp = () => {
             className="tag-del"
             style={{ border: "none" }}
             data-tooltip-id="profile_del"
+            
             onClick={() => {
               setFormData({ ...formData, Patent: e.target.value });
             }}
@@ -310,7 +311,7 @@ const SignUp = () => {
             <span className="fas fa-trash-can" />
           </button>
 
-          <ReactTooltip id="profile_del" place="right" content="Delete Image" />
+          <ReactTooltip id="profile_del" place="right" content="Effacer Image" />
         </div>
         {/* End .profile-img */}
 
@@ -319,8 +320,10 @@ const SignUp = () => {
             <input
               type="file"
               accept="image/jpeg,image/png"
+              
               onChange={handleUpload}
               style={{ display: "none" }}
+              
             />
             <div className="ud-btn btn-white2 mb30">
               Télécharger patente

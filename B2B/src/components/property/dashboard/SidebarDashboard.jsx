@@ -8,12 +8,12 @@ const SidebarDashboard = () => {
 
   const sidebarItems = [
     {
-      title: "MAIN",
+      title: "Principal",
       items: [
         {
           href: "/dashboard-home",
           icon: "flaticon-discovery",
-          text: "Dashboard",
+          text: "Tableau de Bord",
         },
         {
           href: "/dashboard-message",
@@ -23,27 +23,37 @@ const SidebarDashboard = () => {
       ],
     },
     {
-      title: "MANAGE LISTINGS",
+      title: "GÉRER MES ANNONCES",
       items: [
         {
-          href: "/dashboard-add-property",
+          href: "/AjouterOffres",
           icon: "flaticon-new-tab",
-          text: "Add New Property",
+          text: "Ajouter Offre",
         },
         {
-          href: "/dashboard-my-properties",
+          href: "/mesoffres",
           icon: "flaticon-home",
-          text: "My Properties",
+          text: "Mes Offres",
+        },
+        {
+          href: "/ajouterdemandes",
+          icon: "flaticon-new-tab",
+          text: "Ajouter Demande",
+        },
+        {
+          href: "/mesdemandes",
+          icon: "flaticon-home",
+          text: "Mes Demandes",
         },
         {
           href: "/dashboard-my-favourites",
           icon: "flaticon-like",
-          text: "My Favorites",
+          text: "Mes Annonces Favoris",
         },
         {
           href: "/dashboard-saved-search",
           icon: "flaticon-search-2",
-          text: "Saved Search",
+          text: "Recherches Enregistrée",
         },
         {
           href: "/dashboard-reviews",
@@ -53,22 +63,22 @@ const SidebarDashboard = () => {
       ],
     },
     {
-      title: "MANAGE ACCOUNT",
+      title: "GÉRER SON COMPTE",
       items: [
         {
           href: "/dashboard-my-package",
           icon: "flaticon-protection",
-          text: "My Package",
+          text: "Mon Colis",
         },
         {
           href: "/dashboard-my-profile",
           icon: "flaticon-user",
-          text: "My Profile",
+          text: "Mon Profile",
         },
         {
-          href: "/login",
+          href: "/home-v9",
           icon: "flaticon-logout",
-          text: "Logout",
+          text: "Déconnexion",
         },
       ],
     },

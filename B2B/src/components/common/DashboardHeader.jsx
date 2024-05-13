@@ -24,7 +24,7 @@ const DashboardHeader = () => {
       ],
     },
     {
-      title: "GÉRER LES ANNONCES",
+      title: "GÉRER MES ANNONCES",
       items: [
         {
           icon: "flaticon-new-tab",
