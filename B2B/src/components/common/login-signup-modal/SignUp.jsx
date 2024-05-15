@@ -12,6 +12,8 @@ const SignUp = () => {
       Country: selectedOption.value,
     }));
   };
+  const [fileFormData, setFileFormData] = useState(null);
+
   const [uploadedImage, setUploadedImage] = useState(null);
 
   const [formData, setFormData] = useState({
@@ -27,7 +29,7 @@ const SignUp = () => {
     Country: "",
     City: "",
     Taxregistrationnumber: "",
-    Status: "on hold",
+    Status: "",
     Patent: uploadedImage,
   });
 
@@ -39,11 +41,22 @@ const SignUp = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(addAccountRequest(formData));
-    // console.log(formData);
-    // Optionally, you can reset the form fields here
+    try {
+      const formDataCopy = { ...formData };
+      if (formDataCopy.Patent) {
+        const formDataToSend = new FormData();
+        for (const key in formDataCopy) {
+          formDataToSend.append(key, formDataCopy[key]);
+        }
+        await dispatch(addAccountRequest(formDataToSend));
+      } else {
+        console.error("Patent file is required.");
+      }
+    } catch (error) {
+      console.error("Error occurred while submitting:", error);
+    }
   };
 
   const inqueryType = [
@@ -74,19 +87,16 @@ const SignUp = () => {
   const handleUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setUploadedImage(e.target.result);
-
-        setFormData({
-          ...formData,
-          Patent: `${file.name}`,
-        });
-      };
-      reader.readAsDataURL(file);
+      const filePath = URL.createObjectURL(file);
+      setUploadedImage(filePath);
+      setFormData({ ...formData, Patent: file }); // Store the file object
     }
   };
 
+  const handleClick = (e) => {
+    setUploadedImage(null);
+    setFormData({ ...formData, Patent: null }); // Clear the Patent field
+  };
   return (
     <form className="form-style1" onSubmit={handleSubmit}>
       <div className="mb25">
@@ -302,16 +312,16 @@ const SignUp = () => {
             className="tag-del"
             style={{ border: "none" }}
             data-tooltip-id="profile_del"
-            
-            onClick={() => {
-              setFormData({ ...formData, Patent: e.target.value });
-            }}
-            value={formData.Patent}
+            onClick={handleClick}
           >
             <span className="fas fa-trash-can" />
           </button>
 
-          <ReactTooltip id="profile_del" place="right" content="Effacer Image" />
+          <ReactTooltip
+            id="profile_del"
+            place="right"
+            content="Effacer Image"
+          />
         </div>
         {/* End .profile-img */}
 
@@ -320,10 +330,8 @@ const SignUp = () => {
             <input
               type="file"
               accept="image/jpeg,image/png"
-              
               onChange={handleUpload}
               style={{ display: "none" }}
-              
             />
             <div className="ud-btn btn-white2 mb30">
               Télécharger patente

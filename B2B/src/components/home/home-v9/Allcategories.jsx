@@ -2,7 +2,7 @@ import Header from "./Header";
 import MobileMenu from "@/components/common/mobile-menu";
 import Pagination from "@/components/property/Pagination";
 import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
-import Footer from "./footer";
+import Footer from "@/components/property/dashboard/Footer";
 import ListingsFavourites from "@/components/property/dashboard/dashboard-my-favourites/ListingsFavourites";
 import DashboardHeader from "@/components/common/DashboardHeader";
 import MetaData from "@/components/common/MetaData";
