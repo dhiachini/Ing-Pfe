@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const upload = require("../middleware/upload");
+const cloudinary = require("../cloudinaryConfig");
+
 const {
   AddAccountRequest,
   FindAllAccountRequests,
@@ -10,8 +12,18 @@ const {
 } = require("../controllers/accountrequest.controller");
 
 /* add account request */
-router.post("/accountrequests", upload.single("Patent"), AddAccountRequest);
+router.post("/accountrequests", upload.single("Patent"), async (req, res) => {
+  try {
+    // Upload file to Cloudinary
+    const result = await cloudinary.uploader.upload(req.file.path);
 
+    // Call the controller function to add account request passing the Cloudinary URL
+    AddAccountRequest(req, res, result.secure_url);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 /* find all account requests */
 router.get("/accountrequests", FindAllAccountRequests);
 

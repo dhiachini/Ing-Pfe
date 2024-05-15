@@ -1,13 +1,20 @@
 const AccountRequest = require("../models/accountrequest.model");
 const ValidateAccountRequest = require("../validation/Accountrequest.validation");
 const path = require("path");
+const cloudinary = require("cloudinary");
+
 
 const AddAccountRequest = async (req, res) => {
   try {
     const { errors, isValid } = ValidateAccountRequest(req.body);
-
+    const result = await cloudinary.uploader.upload(req.file.path);
     if (!isValid) {
       return res.status(400).json(errors);
+    }
+
+    let patentPath = "";
+    if (req.file) {
+      patentPath = req.file.path; // Get the file path
     }
 
     const existingRequest = await AccountRequest.findOne({
@@ -32,13 +39,9 @@ const AddAccountRequest = async (req, res) => {
       Country: req.body.Country,
       City: req.body.City,
       Taxregistrationnumber: req.body.Taxregistrationnumber,
-      Status: "on hold",
-      Patent : req.body.Patent,
+      Status: "En attente",
+      Patent: result.secure_url,
     });
-
-    if (req.file) {
-      accountRequest.Patent = req.file.path;
-    }
 
     await accountRequest.save();
     res.status(201).json({ message: "Account request added successfully" });

@@ -5,8 +5,8 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 require('dotenv').config();
 const cors = require('cors');
-const routerUsers = require('./routes/users.route')
 const routerAccountRequests = require('./routes/accountrequest.route')
+const uploadRouter = require('./routes/accountrequest.route');
 var app = express();
 
 app.use(logger('dev'));
@@ -19,9 +19,9 @@ mongoose.connect(process.env.MONGO_URI)
 .then(()=> console.log('DB connected'))
 .catch(err => console.log(err.message   ))
 
-app.use('/api', routerUsers)
-app.use('/api', routerAccountRequests)
 
+app.use('/api', routerAccountRequests)
+app.use('/upload', uploadRouter);
 
 
 module.exports = app;
