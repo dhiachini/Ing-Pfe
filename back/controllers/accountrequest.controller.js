@@ -23,7 +23,7 @@ const AddAccountRequest = async (req, res) => {
 
     if (existingRequest) {
       errors.Professionalemail = "Account request already exists";
-      return res.status(400).json(errors);
+      return res.status(400).json({message:"compte exist deja"});
     }
 
     const accountRequest = new AccountRequest({

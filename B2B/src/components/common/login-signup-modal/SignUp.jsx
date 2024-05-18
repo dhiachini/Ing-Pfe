@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
-import { addAccountRequest } from "../../../Actions/accountrequest.actions";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import toast, { Toaster } from "react-hot-toast";
+import { addAccountRequest } from "../../../Redux/Actions/accountRequestActions";
 
 const SignUp = () => {
   const dispatch = useDispatch();
+  const alert = useSelector((state) => state.account.errors);
   const handleChangeSelect = (selectedOption) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -43,19 +45,27 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const formDataCopy = { ...formData };
-      if (formDataCopy.Patent) {
-        const formDataToSend = new FormData();
-        for (const key in formDataCopy) {
-          formDataToSend.append(key, formDataCopy[key]);
-        }
-        await dispatch(addAccountRequest(formDataToSend));
-      } else {
-        console.error("Patent file is required.");
+    console.log(alert.message);
+    var formDataToSend = {};
+
+    const formDataCopy = { ...formData };
+
+    if (formDataCopy.Patent) {
+      formDataToSend = new FormData();
+      for (const key in formDataCopy) {
+        formDataToSend.append(key, formDataCopy[key]);
       }
-    } catch (error) {
-      console.error("Error occurred while submitting:", error);
+    } else {
+      console.error("Patent file is required.");
+    }
+    dispatch(addAccountRequest(formDataToSend));
+
+    if (alert && alert.message != null) {
+      toast.error("compte exist deja");
+    } else {
+      toast.success(
+        "Demande de compte a été envoyer avec succés , vous recevrez un email de l administrateur lors de l acceptation"
+      );
     }
   };
 
@@ -351,6 +361,7 @@ const SignUp = () => {
           Envoyer <i className="fal fa-arrow-right-long" />
         </button>
       </div>
+      <Toaster position="bottom-center" reverseOrder={true} />
     </form>
   );
 };
