@@ -5,50 +5,22 @@ const Schema = mongoose.Schema;
 
 const AccountRequestSchema = new Schema(
   {
-    Fullname: {
-      type: String,
-    },
-    Companyname: {
-      type: String,
-    },
-    Professionalemail: {
-      type: String,
-    },
-    Password: {
-      type: String,
-    },
-    Confirmpassword: {
-      type: String,
-    },
-    Telephonecode: {
-      type: String,
-    },
-    Phonenumber: {
-      type: String,
-    },
-    Websiteurl: {
-      type: String,
-    },
-    Adresse: {
-      type: String,
-    },
-    Country: {
-      type: String,
-    },
-    City: {
-      type: String,
-    },
-    Taxregistrationnumber: {
-      type: String,
-    },
-    Patent: {
-      type: String,
-    },
-    Status: {
-        type: String,
-      }
+    Fullname: String,
+    Companyname: String,
+    Professionalemail: String,
+    Password: String,
+    Confirmpassword: String,
+    Telephonecode: String,
+    Phonenumber: String,
+    Websiteurl: String,
+    Adresse: String,
+    Country: String,
+    City: String,
+    Taxregistrationnumber: String,
+    Patent: String,
+    Status: String
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("accountrequests", AccountRequestSchema);
+module.exports = mongoose.model("AccountRequest", AccountRequestSchema);

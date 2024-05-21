@@ -2,9 +2,9 @@ import Header from "./Header";
 import MobileMenu from "@/components/common/mobile-menu";
 import Pagination from "@/components/property/Pagination";
 import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
-import Footer from "./footer";
+import Footer from "@/components/property/dashboard/Footer"; 
 import ListingsCategoriesDemande from "@/components/property/dashboard/dashboard-my-favourites/ListingsCategoriesDemande";
-
+import SidebarDashboard from "@/components/property/dashboard/SidebarDashboard";
 import MetaData from "@/components/common/MetaData";
 
 const metaInformation = {
@@ -22,7 +22,7 @@ const CategoriesDemande = () => {
       {/* Mobile Nav  */}
       <MobileMenu />
       {/* End Mobile Nav  */}
-
+      <SidebarDashboard />
       {/* dashboard_content_wrapper */}
      
           <div className="dashboard__main pl0-md">

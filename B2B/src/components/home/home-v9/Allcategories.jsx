@@ -6,6 +6,7 @@ import Footer from "@/components/property/dashboard/Footer";
 import ListingsFavourites from "@/components/property/dashboard/dashboard-my-favourites/ListingsFavourites";
 import DashboardHeader from "@/components/common/DashboardHeader";
 import MetaData from "@/components/common/MetaData";
+import SidebarDashboard from "@/components/property/dashboard/SidebarDashboard";
 
 const metaInformation = {
   title: "Catégories || Plateforme d'échange Algéro - Tunisienne",
@@ -22,7 +23,7 @@ const Allcategories = () => {
       {/* Mobile Nav  */}
       <MobileMenu />
       {/* End Mobile Nav  */}
-
+      <SidebarDashboard />
       {/* dashboard_content_wrapper */}
      
           <div className="dashboard__main pl0-md">

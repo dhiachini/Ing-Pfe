@@ -36,7 +36,7 @@ const SignIn = () => {
           <input type="checkbox" defaultChecked="checked" />
           <span className="checkmark" />
         </label>
-        <a className="fz14 ff-heading" href="#">
+        <a className="fz14 ff-heading" href="\login">
           Mot de passe oublié?
         </a>
       </div>

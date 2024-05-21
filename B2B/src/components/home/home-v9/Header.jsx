@@ -1,15 +1,25 @@
-
-
 import MainMenu from "@/components/common/MainMenu";
 import SidebarPanel from "@/components/common/sidebar-panel";
 import LoginSignupModal from "@/components/common/login-signup-modal";
-
+import { useDispatch, useSelector } from "react-redux";
+import { popon } from "../../../../Redux/Slices/requestSlice";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-
 const Header = () => {
+  const dispatch = useDispatch();
+ // var style = {};
+  const pop = useSelector((state) => state.account.pop);
   const [navbar, setNavbar] = useState(false);
-
+  const [style, setStyle] = useState({});
+   useEffect(() => {
+     if (!pop) {
+       setTimeout(() => {
+         setStyle({ opacity: 0 });
+       }, 5000);
+     } else {
+       setStyle({ opacity: 1 });
+     }
+   }, [pop]);
   const changeBackground = () => {
     if (window.scrollY >= 10) {
       setNavbar(true);
@@ -17,14 +27,12 @@ const Header = () => {
       setNavbar(false);
     }
   };
-
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
     return () => {
       window.removeEventListener("scroll", changeBackground);
     };
   }, []);
-
   return (
     <>
       <header
@@ -39,18 +47,10 @@ const Header = () => {
                 <div className="d-flex align-items-center justify-content-between">
                   <div className="logos mr40">
                     <Link className="header-logo logo1" to="/">
-                      <img
-                        
-                        src="/images/navbar.png"
-                        alt="Header Logo"
-                      />
+                      <img src="/images/navbar.png" alt="Header Logo" />
                     </Link>
                     <Link className="header-logo logo2" to="/">
-                      <img
-                       
-                        src="/images/navbar.png"
-                        alt="Header Logo"
-                      />
+                      <img src="/images/navbar.png" alt="Header Logo" />
                     </Link>
                   </div>
                   {/* End Logo */}
@@ -76,43 +76,16 @@ const Header = () => {
                     data-bs-toggle="modal"
                     data-bs-target="#loginSignupModal"
                     role="button"
+                    onClick={() => dispatch(popon(true))}
                   >
                     <i className="far fa-user-circle fz16 me-2" />{" "}
-                    <span className="d-none d-xl-block">Se connecter / Demander un compte</span>
+                    <span className="d-none d-xl-block">
+                      Se connecter / Demander un compte
+                    </span>
                   </a>
-                  {/* <Link
-                    className="ud-btn add-property menu-btn bdrs60 mx-2 mx-xl-4"
-                    to="/dashboard-add-property"
-                  >
-                    Add Property
-                    <i className="fal fa-arrow-right-long" />
-                  </Link> */}
-                  {/* <a
-                    className="sidemenu-btn filter-btn-right"
-                    href="#"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#SidebarPanel"
-                    aria-controls="SidebarPanelLabel"
-                  >
-                    <img
-                    
-                      className="img-1"
-                      src="/images/icon/nav-icon-white.svg"
-                      alt="humberger menu"
-                    />
-
-                    <img
-                     
-                      className="img-2"
-                      src="/images/icon/nav-icon-dark.svg"
-                      alt="humberger menu"
-                    />
-                  </a> */}
                 </div>
               </div>
-              
               {/* End .col-auto */}
-
             </div>
             {/* End .row */}
           </div>
@@ -121,7 +94,7 @@ const Header = () => {
       {/* End Header */}
 
       {/* Signup Modal */}
-      <div className="signup-modal">
+      <div className="signup-modal" style={pop === false ? style : {}}>
         <div
           className="modal fade"
           id="loginSignupModal"
