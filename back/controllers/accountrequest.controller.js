@@ -2,6 +2,7 @@ const AccountRequest = require("../models/accountrequest.model");
 const ValidateAccountRequest = require("../validation/Accountrequest.validation");
 const path = require("path");
 const cloudinary = require("cloudinary");
+const sendEmail = require('../emailService');
 
 
 const AddAccountRequest = async (req, res) => {
@@ -65,6 +66,8 @@ const updateAccountRequestStatus = async (req, res) => {
     accountRequest.Status = "Acceptée";
     // Save the updated account request
     await accountRequest.save();
+    // Send email notification
+    sendEmail(accountRequest.Professionalemail, 'Account Request Accepted', 'Your account request has been accepted.');
     res.status(200).json({ message: "Account request status updated successfully" });
   } catch (error) {
     console.error(error.message);
@@ -84,6 +87,8 @@ const updateAccountRequestStatusToRefused = async (req, res) => {
     accountRequest.Status = "Refusée";
     // Save the updated account request
     await accountRequest.save();
+    // Send email notification
+    sendEmail(accountRequest.Professionalemail, 'Account Request Refused', 'Your account request has been refused.');
     res.status(200).json({ message: "Account request status updated to Refusée successfully" });
   } catch (error) {
     console.error(error.message);
