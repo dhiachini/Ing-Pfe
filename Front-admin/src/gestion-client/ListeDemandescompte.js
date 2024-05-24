@@ -37,22 +37,23 @@ const ListeDemandescompte = () => {
     };
 
     fetchData();
-  }, [data]);
+  }, []);
 
   const handleAccepterAction = async (id) => {
     try {
       await axios.put(`http://localhost:3700/api/accountrequests/${id}/accept`);
 
-      toast.success("Demande de compte acceptée",{autoClose:1500});
+      toast.success("Demande de compte acceptée", { autoClose: 1500 });
     } catch (error) {
       console.error("Error updating status:", error);
     }
   };
+
   const handleRefuserAction = async (id) => {
     try {
       await axios.put(`http://localhost:3700/api/accountrequests/${id}/refuse`);
 
-      toast.error("Demande de compte refusée ",{autoClose:1500});
+      toast.error("Demande de compte refusée ", { autoClose: 1500 });
     } catch (error) {
       console.error("Error updating status:", error);
     }
@@ -117,9 +118,11 @@ const ListeDemandescompte = () => {
               <i className="ri-more-fill align-middle"></i>
             </DropdownToggle>
             <DropdownMenu className="dropdown-menu-end">
-              <DropdownItem href="/projectdetails">
-                <i className="ri-eye-fill align-bottom me-2 text-muted"></i>{" "}
-                Visualiser
+              <DropdownItem className="dropdown-item">
+                <Link to={`/detailsdemandecompte/${row._id}`}>
+                  <i className="ri-eye-fill align-bottom me-2 text-muted"></i>{" "}
+                  Visualiser
+                </Link>
               </DropdownItem>
               <DropdownItem
                 onClick={() => handleAccepterAction(row._id)}

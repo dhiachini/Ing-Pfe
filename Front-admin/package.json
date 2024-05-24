@@ -162,5 +162,6 @@
   },
   "devDependencies": {
     "babel-plugin-prismjs": "^2.1.0"
-  }
+  },
+  "proxy":"http://localhost:3700/"
 }

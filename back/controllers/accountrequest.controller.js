@@ -108,7 +108,7 @@ const FindAllAccountRequests = async (req, res) => {
 
 const FindSingleAccountRequest = async (req, res) => {
   try {
-    const accountRequest = await AccountRequest.findById(req.params.id);
+    const accountRequest = await AccountRequest.findOne({_id:req.params.id});
     if (!accountRequest) {
       return res.status(404).json({ message: "Account request not found" });
     }
