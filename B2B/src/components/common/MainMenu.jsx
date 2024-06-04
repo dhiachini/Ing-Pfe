@@ -5,16 +5,15 @@ import {
   propertyItems,
   pageItems,
 } from "@/data/navItems";
-import { Link} from "react-router-dom";
-import {useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const MainMenu = () => {
-  const { pathname } = useLocation()
+  const { pathname } = useLocation();
 
   const [topMenu, setTopMenu] = useState("");
   const [submenu, setSubmenu] = useState("");
-
 
   useEffect(() => {
     homeItems.forEach((elm) => {
@@ -56,17 +55,12 @@ const MainMenu = () => {
     }
   };
   return (
-    <ul className="ace-responsive-menu " >
-
+    <ul className="ace-responsive-menu ">
       <li className="visible_list dropitem">
         <a className="list-item" href="/">
-          
-            Accueil
-          
-          
+          Accueil
         </a>
         {/* Level Two*/}
-      
       </li>
       {/* End homeItems */}
 
@@ -137,7 +131,6 @@ const MainMenu = () => {
           ))}
         </ul> */}
       </li>
-     
 
       <li className="visible_list dropitem">
         <a className="list-item" href="/categoriesdemande">
@@ -156,7 +149,21 @@ const MainMenu = () => {
           ))}
         </ul> */}
       </li>
-      
+
+      <style>
+        {`
+          .vip {
+            color: gold;
+          }
+        `}
+      </style>
+      <li className="visible_list dropitem">
+        <a className="list-item" href="/contact">
+          <span className={topMenu === "blog" ? "title menuActive" : "title"}>
+            Espace <span className="vip">VIP</span>
+          </span>
+        </a>
+      </li>
 
       {/* <li className="visible_list dropitem">
         <a className="list-item" href="#">
@@ -175,7 +182,6 @@ const MainMenu = () => {
           ))}
         </ul>
       </li> */}
-      
     </ul>
   );
 };

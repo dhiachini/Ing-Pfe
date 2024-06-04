@@ -1,27 +1,32 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var mongoose = require('mongoose');
-require('dotenv').config();
-const cors = require('cors');
-const routerAccountRequests = require('./routes/accountrequest.route')
-const uploadRouter = require('./routes/accountrequest.route');
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const mongoose = require("mongoose");
+require("dotenv").config();
+const cors = require("cors");
+const routerAccountRequests = require("./routes/accountrequest.route");
+const uploadRouter = require("./routes/accountrequest.route");
+const authRouter = require("./routes/auth.route");
+const routeroffer = require("./routes/offer.route");
+
 var app = express();
 
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
-mongoose.connect(process.env.MONGO_URI)
-.then(()=> console.log('DB connected'))
-.catch(err => console.log(err.message   ))
 
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("DB connected"))
+  .catch((err) => console.log(err.message));
 
-app.use('/api', routerAccountRequests)
-app.use('/upload', uploadRouter);
-
+app.use("/api", routerAccountRequests);
+app.use("/upload", uploadRouter);
+app.use("/api/auth", authRouter);
+app.use("/api", routeroffer);
 
 module.exports = app;

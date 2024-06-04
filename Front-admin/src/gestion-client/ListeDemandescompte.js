@@ -37,7 +37,7 @@ const ListeDemandescompte = () => {
     };
 
     fetchData();
-  }, []);
+  }, [data]);
 
   const handleAccepterAction = async (id) => {
     try {

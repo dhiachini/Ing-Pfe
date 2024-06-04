@@ -1,6 +1,6 @@
 import CallToActions from "@/components/common/CallToActions";
 import DashboardHeader from "@/components/common/DashboardHeader";
-import Footer from "@/components/home/home-v9/footer";
+import Footer from "@/components/property/dashboard/Footer";
 import MobileMenu from "@/components/common/mobile-menu";
 import Form from "@/components/pages/contact/Form";
 import Office from "@/components/pages/contact/Office";
@@ -14,7 +14,7 @@ const metaInformation = {
 const Contact = () => {
   return (
     <>
-    <MetaData meta={metaInformation} />
+      <MetaData meta={metaInformation} />
       {/* Main Header Nav */}
       <DashboardHeader />
       {/* End Main Header Nav */}
@@ -42,7 +42,8 @@ const Contact = () => {
             <div className="col-lg-5 position-relative">
               <div className="home8-contact-form default-box-shadow1 bdrs12 bdr1 p30 mb30-md bgc-white">
                 <h4 className="form-title mb25">
-                  Have questions? Get in touch!
+                  En remplissant ce formulaire de service, nous saurons comment
+                  mieux vous aider
                 </h4>
                 <Form />
               </div>
@@ -51,13 +52,11 @@ const Contact = () => {
 
             <div className="col-lg-5 offset-lg-2">
               <h2 className="mb30 text-capitalize">
-                We’d love to hear <br className="d-none d-lg-block" />
-                from you.
+              Nous serions ravis de vous <br className="d-none d-lg-block" />
+               entendre.
               </h2>
               <p className="text">
-                We are here to answer any question you may have. As a partner of
-                corporates, realton has more than 9,000 offices of all sizes and
-                all potential of session.
+              Une fois que vous avez soumis votre formulaire, notre équipe le recevra rapidement et vous contactera pour garantir que vos besoins en matière de service sont efficacement pris en charge.
               </p>
             </div>
             {/* End .col */}
@@ -76,10 +75,9 @@ const Contact = () => {
               data-aos-delay="300"
             >
               <div className="main-title text-center">
-                <h2 className="title">Visit Our Office</h2>
+                <h2 className="title">Visitez notre bureau</h2>
                 <p className="paragraph">
-                  Realton has more than 9,000 offices of all sizes and all
-                  potential of session.
+                TunAl dispose d'un bureau unique, adaptable à toutes les tailles et à tous les besoins de sessions possibles.
                 </p>
               </div>
             </div>
@@ -98,10 +96,10 @@ const Contact = () => {
       <CallToActions />
       {/* Our CTA */}
 
-     {/* Start Our Footer */}
-     <section className="footer-style1 at-home4 pt60 pb-0">
+      {/* Start Our Footer */}
+     
         <Footer />
-      </section>
+     
       {/* End Our Footer */}
     </>
   );

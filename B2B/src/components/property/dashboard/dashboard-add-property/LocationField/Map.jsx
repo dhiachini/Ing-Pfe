@@ -38,9 +38,9 @@ function Map({ setLatInput, setLngInput }) {
   }, []);
 
   return (
-    <div>
+    
       <div ref={mapContainer} style={{ height: "400px"}} />
-    </div>
+    
   );
 }
 

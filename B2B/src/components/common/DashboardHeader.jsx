@@ -1,11 +1,19 @@
 import MainMenu from "@/components/common/MainMenu";
 import SidebarPanel from "@/components/common/sidebar-panel";
-
-import { Link, useLocation } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../../Redux/Actions/authActions";
 
 const DashboardHeader = () => {
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logoutAction());
+    navigate('/home-v9');
+  };
 
   const menuItems = [
     {
@@ -43,7 +51,7 @@ const DashboardHeader = () => {
         },
         {
           icon: "flaticon-home",
-          text: "Mes  Demandes",
+          text: "Mes Demandes",
           href: "/mesdemandes",
         },
         {
@@ -72,7 +80,11 @@ const DashboardHeader = () => {
           text: "Mon Profile",
           href: "/dashboard-my-profile",
         },
-        { icon: "flaticon-exit", text: "Déconnexion", href: "/home-v9" },
+        {
+          icon: "flaticon-exit",
+          text: "Déconnexion",
+          action: handleLogout,
+        },
       ],
     },
   ];
@@ -91,21 +103,6 @@ const DashboardHeader = () => {
                     </Link>
                   </div>
                   {/* End Logo */}
-
-                  {/* <a
-                    className="dashboard_sidebar_toggle_icon text-thm1 vam"
-                    href="#"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#SidebarPanel"
-                    aria-controls="SidebarPanelLabel"
-                  > */}
-                  {/* <img
-                     
-                      className="img-1"
-                      src="/images/dark-nav-icon.svg"
-                      alt="humberger menu"
-                    />
-                  </a> */}
                 </div>
               </div>
               {/* End .col-auto */}
@@ -140,7 +137,7 @@ const DashboardHeader = () => {
                     </li>
                     {/* End notification icon */}
 
-                    <li className=" user_setting">
+                    <li className="user_setting">
                       <div className="dropdown">
                         <a className="btn" href="#" data-bs-toggle="dropdown">
                           <img
@@ -159,18 +156,40 @@ const DashboardHeader = () => {
                                 >
                                   {section.title}
                                 </p>
-                                {section.items.map((item, itemIndex) => (
-                                  <Link
-                                    key={itemIndex}
-                                    className={`dropdown-item ${
-                                      pathname == item.href ? "-is-active" : ""
-                                    } `}
-                                    to={item.href}
-                                  >
-                                    <i className={`${item.icon} mr10`} />
-                                    {item.text}
-                                  </Link>
-                                ))}
+                                {section.items.map((item, itemIndex) => {
+                                  if (item.action) {
+                                    return (
+                                      <button
+                                        key={itemIndex}
+                                        className="dropdown-item"
+                                        onClick={item.action}
+                                        style={{
+                                          background: 'none',
+                                          border: 'none',
+                                          padding: '0',
+                                          textAlign: 'left',
+                                          width: '100%',
+                                        }}
+                                      >
+                                        <i className={`${item.icon} mr10`} />
+                                        {item.text}
+                                      </button>
+                                    );
+                                  } else {
+                                    return (
+                                      <Link
+                                        key={itemIndex}
+                                        className={`dropdown-item ${
+                                          pathname === item.href ? "-is-active" : ""
+                                        }`}
+                                        to={item.href}
+                                      >
+                                        <i className={`${item.icon} mr10`} />
+                                        {item.text}
+                                      </Link>
+                                    );
+                                  }
+                                })}
                               </div>
                             ))}
                           </div>

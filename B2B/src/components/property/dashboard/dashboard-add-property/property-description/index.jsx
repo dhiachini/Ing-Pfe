@@ -6,13 +6,18 @@ const PropertyDescription = ({ s, n, f }) => {
   const catergoryOptions = [
     { value: "Agriculture", label: "Agriculture" },
     { value: "Vêtements et mode", label: "Vêtements et mode" },
-    { value: "Construction et immobilier",label: "Construction et immobilier",},
-    { value: "Emballage et papier", label: "Emballage et papier" },
-    { value: "Construction et immobilier",label: "Construction et immobilier",
-    
+    {
+      value: "Construction et immobilier",
+      label: "Construction et immobilier",
     },
-    { value: "Construction et immobilier",label: "Construction et immobilier",
-    
+    { value: "Emballage et papier", label: "Emballage et papier" },
+    {
+      value: "Construction et immobilier",
+      label: "Construction et immobilier",
+    },
+    {
+      value: "Construction et immobilier",
+      label: "Construction et immobilier",
     },
   ];
   const listedIn = [
@@ -219,12 +224,20 @@ const PropertyDescription = ({ s, n, f }) => {
         <div className="col-sm-6 col-xl-4">
           <div className="mb30">
             <label className="heading-color ff-heading fw600 mb10">
-              Prix ​​en TND
+              {form.transaction && form.transaction.label === "Investissement"
+                ? "Capital"
+                : form.pays && form.pays.label === "Algérie"
+                ? "Prix en DZD"
+                : "Prix en TND"}
             </label>
             <input
               type="text"
               className="form-control"
-              placeholder="Entrer le prix"
+              placeholder={
+                form.transaction && form.transaction.label === "Investissement"
+                  ? "Entrer votre Capital"
+                  : "Entrer le prix"
+              }
               name="price"
               value={form.price}
               onChange={handleChange}

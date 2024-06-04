@@ -220,7 +220,7 @@ const Navdata = () => {
                     label: "Liste demandes de compte",
                     link: "/demandescompte",
                     parentId: "apps",
-                    badgeName: "New",
+                    badgeName: "Nouveau",
                     badgeColor: "success",
                 },
                 {

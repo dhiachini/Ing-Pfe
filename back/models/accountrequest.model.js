@@ -1,5 +1,4 @@
-// accountrequest.model.js
-
+// models/accountrequest.model.js
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -7,7 +6,7 @@ const AccountRequestSchema = new Schema(
   {
     Fullname: String,
     Companyname: String,
-    Professionalemail: String,
+    Professionalemail: { type: String, unique: true },
     Password: String,
     Confirmpassword: String,
     Telephonecode: String,
@@ -18,7 +17,7 @@ const AccountRequestSchema = new Schema(
     City: String,
     Taxregistrationnumber: String,
     Patent: String,
-    Status: String
+    Status: { type: String, default: "En attente" }
   },
   { timestamps: true }
 );

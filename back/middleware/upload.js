@@ -21,4 +21,18 @@ router.post('/upload', upload.single('patent'), (req, res) => {
   res.status(200).json({ message: 'File uploaded successfully' });
 });
 
-module.exports = upload;
+
+
+// Initialize multer
+const uploadMultiple = multer({ storage: storage });
+
+// Route to handle file upload
+router.post('/uploadMultiple', uploadMultiple.array('images', 5), (req, res) => {
+  // Files have been uploaded successfully
+  res.status(200).json({ message: 'Files uploaded successfully' });
+});
+
+
+
+
+module.exports = {upload , uploadMultiple};

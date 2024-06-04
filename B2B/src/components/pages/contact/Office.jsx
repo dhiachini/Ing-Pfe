@@ -1,34 +1,19 @@
-
 import React from "react";
 
 const Office = () => {
   const offices = [
     {
-      id: 1,
-      city: "Paris",
-      icon: "/images/icon/paris.svg",
-      address: "1301 2nd Ave, Seattle, WA 98101",
-      phoneNumber: "(315) 905-2321",
-    },
-    {
       id: 2,
-      city: "London",
+      city: "Tunisie",
       icon: "/images/icon/london.svg",
-      address: "1301 2nd Ave, Seattle, WA 98101",
-      phoneNumber: "(315) 905-2321",
-    },
-    {
-      id: 3,
-      city: "New York",
-      icon: "/images/icon/new-york.svg",
-      address: "1301 2nd Ave, Seattle, WA 98101",
+      address: "Tunisie, Sousse, CP 4000",
       phoneNumber: "(315) 905-2321",
     },
     // Add more office objects here...
   ];
 
   return (
-    <>
+    <div className="row justify-content-center">
       {offices.map((office) => (
         <div className="col-sm-6 col-lg-4" key={office.id}>
           <div className="iconbox-style8 text-center">
@@ -46,7 +31,7 @@ const Office = () => {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

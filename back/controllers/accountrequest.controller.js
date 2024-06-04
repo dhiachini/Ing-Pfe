@@ -3,6 +3,7 @@ const ValidateAccountRequest = require("../validation/Accountrequest.validation"
 const path = require("path");
 const cloudinary = require("cloudinary");
 const sendEmail = require('../emailService');
+const bcrypt = require("bcryptjs");
 
 
 const AddAccountRequest = async (req, res) => {
@@ -16,21 +17,21 @@ const AddAccountRequest = async (req, res) => {
     });
     if (existingRequest) {
       errors.Professionalemail = "Account request already exists";
-      return res
-        .status(400)
-        .json({ message: "Account request already exists" });
+      return res.status(400).json({ message: "Account request already exists" });
     } else {
-       var patentP = "";
-       if (req.file) {
-         patentP = req.file.path; // Get the file path
-       }
-      const result = await cloudinary.uploader.upload(patentP);
+     
+      if (req.file) {
+        Patent = req.file.path; // Get the file path
+      }
+      const result = await cloudinary.uploader.upload(Patent);
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(req.body.Password, salt);
       const accountRequest = new AccountRequest({
         Fullname: req.body.Fullname,
         Companyname: req.body.Companyname,
         Professionalemail: req.body.Professionalemail,
-        Password: req.body.Password,
-        Confirmpassword: req.body.Confirmpassword,
+        Password: hashedPassword,
+        Confirmpassword: hashedPassword,
         Telephonecode: req.body.Telephonecode,
         Phonenumber: req.body.Phonenumber,
         Websiteurl: req.body.Websiteurl,
@@ -46,7 +47,6 @@ const AddAccountRequest = async (req, res) => {
         message: "Account request added successfully",
         accountRequest: accountRequest,
       });
-      
     }
   } catch (error) {
     console.error(error.message);
@@ -108,11 +108,13 @@ const FindAllAccountRequests = async (req, res) => {
 
 const FindSingleAccountRequest = async (req, res) => {
   try {
-    const accountRequest = await AccountRequest.findOne({_id:req.params.id});
+    const accountRequest = await AccountRequest.findById(req.params.id);
     if (!accountRequest) {
       return res.status(404).json({ message: "Account request not found" });
+    }else {
+      return res.status(200).json(accountRequest);
     }
-    res.status(200).json(accountRequest);
+    
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ message: "Server error" });

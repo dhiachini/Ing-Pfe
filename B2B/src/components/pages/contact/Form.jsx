@@ -6,13 +6,11 @@ const Form = () => {
       <div className="row">
         <div className="col-lg-12">
           <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">
-              First Name
-            </label>
+            <label className="heading-color ff-heading fw600 mb10">Titre</label>
             <input
               type="text"
               className="form-control"
-              placeholder="Your Name"
+              placeholder="Titre de service"
               required
             />
           </div>
@@ -22,12 +20,12 @@ const Form = () => {
         <div className="col-lg-12">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
-              Last Name
+              Type de service
             </label>
             <input
               type="text"
               className="form-control"
-              placeholder="Your Name"
+              placeholder="EX : expert contable, avocat, expert financier, autre.."
               required
             />
           </div>
@@ -36,11 +34,13 @@ const Form = () => {
 
         <div className="col-md-12">
           <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">Email</label>
+            <label className="heading-color ff-heading fw600 mb10">
+              Lieu de la Prestation
+            </label>
             <input
-              type="email"
+              type="text"
               className="form-control"
-              placeholder="Your Name"
+              placeholder="Indiquez l'adresse ou les endroits où le service est requis."
               required
             />
           </div>
@@ -50,12 +50,12 @@ const Form = () => {
         <div className="col-md-12">
           <div className="mb10">
             <label className="heading-color ff-heading fw600 mb10">
-              Textarea
+              Description du Besoin
             </label>
             <textarea
               cols={30}
               rows={4}
-              placeholder="There are many variations of passages."
+              placeholder="Veuillez décrire en détail ce que vous attendez de notre service."
               defaultValue={""}
               required
             />
@@ -66,7 +66,7 @@ const Form = () => {
         <div className="col-md-12">
           <div className="d-grid">
             <button type="submit" className="ud-btn btn-thm">
-              Submit
+              Soumettre
               <i className="fal fa-arrow-right-long" />
             </button>
           </div>
