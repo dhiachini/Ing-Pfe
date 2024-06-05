@@ -1,21 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import PropertyDescription from "./property-description";
 import UploadMedia from "./upload-media";
 import LocationField from "./LocationField";
-import DetailsFiled from "./details-field";
-import Amenities from "./Amenities";
+import { createOffer } from "../../../../../Redux/Actions/offersActions";
 import "./element.css";
 
 const AddPropertyTabContent = () => {
   const [s, setS] = useState(0);
-  const n = () => {
-    setS(s + 1);
-  };
-  const f = () => {
-    setS(0);
-  };
   const [m, setM] = useState(0);
   const [e, setE] = useState(0);
+
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    category: "",
+    subcategory: "",
+    transactionType: "",
+    country: "",
+    price: "",
+    images: [],
+    latitude: "",
+    longitude: "",
+  });
+
+  const dispatch = useDispatch(); 
+
+  const n = () => setS(s + 1);
+  const f = () => setS(0);
+
+  const updateForm = (name, value) => {
+    name !== undefined ?
+    setFormData({
+      ...formData,
+      [name]: value,
+    }) : 
+    setFormData({
+      value,
+      ...formData,
+    })
+    ;
+    console.log("Form data updated:", formData);
+  };
+
+  const handleSubmit = () => {
+    dispatch(createOffer());
+  };
+
   return (
     <>
       <nav>
@@ -41,7 +72,7 @@ const AddPropertyTabContent = () => {
             role="tab"
             aria-controls="nav-item2"
             aria-selected="false"
-            disabled={s === 0 ? true : false}
+            disabled={s === 0}
           >
             2. Media
           </button>
@@ -54,37 +85,12 @@ const AddPropertyTabContent = () => {
             role="tab"
             aria-controls="nav-item3"
             aria-selected="false"
-            disabled={m === 0 ? true : false}
+            disabled={m === 0}
           >
             3. Emplacement
           </button>
-          {/* <button
-            className="nav-link fw600"
-            id="nav-item4-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#nav-item4"
-            type="button"
-            role="tab"
-            aria-controls="nav-item4"
-            aria-selected="false"
-          >
-            4. Détailles
-          </button>
-          <button
-            className="nav-link fw600"
-            id="nav-item5-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#nav-item5"
-            type="button"
-            role="tab"
-            aria-controls="nav-item5"
-            aria-selected="false"
-          >
-            5. Agréments
-          </button> */}
         </div>
       </nav>
-      {/* End nav tabs */}
 
       <div className="tab-content" id="nav-tabContent">
         <div
@@ -96,10 +102,15 @@ const AddPropertyTabContent = () => {
         >
           <div className="ps-widget bgc-white bdrs12 ele overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Description de l'offre</h4>
-            <PropertyDescription s={s} n={n} f={f} />
+            <PropertyDescription
+              setFormData={setFormData}
+              updateForm={updateForm}
+              s={s}
+              n={n}
+              f={f}
+            />
           </div>
         </div>
-        {/* End tab for Property Description */}
 
         <div
           className="tab-pane fade"
@@ -107,9 +118,13 @@ const AddPropertyTabContent = () => {
           role="tabpanel"
           aria-labelledby="nav-item2-tab"
         >
-          <UploadMedia m={m} setM={setM} />
+          <UploadMedia
+            setFormData={setFormData}
+            updateForm={updateForm}
+            m={m}
+            setM={setM}
+          />
         </div>
-        {/* End tab for Upload photos of your property */}
 
         <div
           className="tab-pane fade"
@@ -119,38 +134,16 @@ const AddPropertyTabContent = () => {
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
             <h4 className="title fz17 mb30">Emplacement de l'offre</h4>
-            <LocationField e={e} setE={setE} />
+            <LocationField
+              setFormData={setFormData}
+              formData={formData}
+              updateForm={updateForm}
+              e={e}
+              setE={setE}
+              handleSubmit={handleSubmit}
+            />
           </div>
         </div>
-        {/* End tab for Listing Location */}
-
-        {/* <div
-          className="tab-pane fade"
-          id="nav-item4"
-          role="tabpanel"
-          aria-labelledby="nav-item4-tab"
-        >
-          <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
-            <h4 className="title fz17 mb30">Listing Details</h4>
-            <DetailsFiled />
-          </div>
-        </div> */}
-        {/* End tab for Listing Details */}
-
-        {/* <div
-          className="tab-pane fade"
-          id="nav-item5"
-          role="tabpanel"
-          aria-labelledby="nav-item5-tab"
-        >
-          <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
-            <h4 className="title fz17 mb30">Select Amenities</h4>
-            <div className="row">
-              <Amenities />
-            </div>
-          </div>
-        </div> */}
-        {/* End tab for Select Amenities */}
       </div>
     </>
   );

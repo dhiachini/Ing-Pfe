@@ -1,12 +1,10 @@
-import Header from "./Header";
 import MobileMenu from "@/components/common/mobile-menu";
-import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
 import Footer from "@/components/property/dashboard/Footer";
 import SidebarDashboard from "@/components/property/dashboard/SidebarDashboard";
 import AddPropertyTabContent from "@/components/property/dashboard/dashboard-add-property";
-
 import MetaData from "@/components/common/MetaData";
 import DashboardHeader from "@/components/common/DashboardHeader";
+
 
 const metaInformation = {
   title: "Ajouter offre || Plateforme d'échange Algéro - Tunisienne",
@@ -15,9 +13,9 @@ const metaInformation = {
 const AjouterOffres = () => {
   return (
     <>
-    <MetaData meta={metaInformation} />
+      <MetaData meta={metaInformation} />
       {/* Main Header Nav */}
-      <DashboardHeader/>
+      <DashboardHeader />
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}
@@ -62,10 +60,8 @@ const AjouterOffres = () => {
               {/* End .row */}
             </div>
             {/* End dashboard__content */}
-
-            
           </div>
-          
+
           {/* End .dashboard__main */}
         </div>
       </div>

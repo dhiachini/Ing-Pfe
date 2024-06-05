@@ -1,10 +1,12 @@
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import React, { useState, useRef, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { updateStepTwoData } from "../../../../../../Redux/Slices/offersSlice";
 
-const UploadPhotoGallery = ({ m, setM }) => {
+const UploadPhotoGallery = ({ updateForm, m, setM }) => {
   const [uploadedImages, setUploadedImages] = useState([]);
   const fileInputRef = useRef(null);
-
+  const dispatch = useDispatch();
   const handleUpload = (files) => {
     const newImages = [...uploadedImages];
 
@@ -42,6 +44,7 @@ const UploadPhotoGallery = ({ m, setM }) => {
   useEffect(() => {
     if (uploadedImages.length > 0) {
       setM(1);
+      dispatch(updateStepTwoData(uploadedImages))
     } else {
       setM(0);
     }

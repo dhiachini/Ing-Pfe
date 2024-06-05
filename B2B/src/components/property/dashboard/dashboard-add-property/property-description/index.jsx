@@ -1,105 +1,65 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Select from "react-select";
-import UploadMedia from "../upload-media";
+import { updateStepOneData } from "../../../../../../Redux/Slices/offersSlice";
 
-const PropertyDescription = ({ s, n, f }) => {
-  const catergoryOptions = [
+
+const PropertyDescription = ({ updateForm, s, n, f }) => {
+  const dispatch = useDispatch();
+  const categoryOptions = [
     { value: "Agriculture", label: "Agriculture" },
     { value: "Vêtements et mode", label: "Vêtements et mode" },
-    {
-      value: "Construction et immobilier",
-      label: "Construction et immobilier",
-    },
-    { value: "Emballage et papier", label: "Emballage et papier" },
-    {
-      value: "Construction et immobilier",
-      label: "Construction et immobilier",
-    },
-    {
-      value: "Construction et immobilier",
-      label: "Construction et immobilier",
-    },
+    { value: "Construction et immobilier", label: "Construction et immobilier" },
+    { value: "Emballage et papier", label: "Emballage et papier" }
   ];
   const listedIn = [
     { value: "À vendre", label: "À vendre" },
     { value: "À Louer", label: "À Louer" },
-    { value: "Investissement", label: "Investissement" },
+    { value: "Investissement", label: "Investissement" }
   ];
   const PropertyStatus = [
     { value: "Tunisie", label: "Tunisie" },
-    { value: "Algérie", label: "Algérie" },
+    { value: "Algérie", label: "Algérie" }
   ];
 
   const customStyles = {
-    option: (styles, { isFocused, isSelected, isHovered }) => {
-      return {
-        ...styles,
-        backgroundColor: isSelected
-          ? "#eb6753"
-          : isHovered
-          ? "#eb675312"
-          : isFocused
-          ? "#eb675312"
-          : undefined,
-      };
-    },
+    option: (styles, { isFocused, isSelected, isHovered }) => ({
+      ...styles,
+      backgroundColor: isSelected ? "#eb6753" : isHovered ? "#eb675312" : isFocused ? "#eb675312" : undefined
+    }),
     menu: (provided) => ({
       ...provided,
-      maxHeight: "200px", // Adjust as needed
-      overflowY: "auto",
-    }),
+      maxHeight: "200px",
+      overflowY: "auto"
+    })
   };
 
   const [form, setForm] = useState({
-    offertitle: "",
+    title: "",
     description: "",
-    categorie: null,
-    subcategorie: null,
-    transaction: null,
-    pays: null,
-    price: "",
+    category: null,
+    subcategory: null,
+    transactionType: null,
+    country: null,
+    price: ""
   });
 
-  // setSuivant(suivant + 1);
-
-  const handlePrecedent = () => {
-    setPrecedent(precedent - 1);
-  };
-  const isEmpty = (obj) => {
-    for (let key in obj) {
-      if (obj[key] === undefined || obj[key] === null || obj[key] === "") {
-        return false;
-      }
-    }
-    return true;
-  };
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(e.target);
     setForm({ ...form, [name]: value });
-    console.log(form);
   };
-  const handleSelectCategorie = (categorie) => {
-    setForm({ ...form, categorie });
 
-    console.log(form);
+  const handleSelectChange = (name, value) => {
+    setForm({ ...form, [name]: value });
   };
-  const handleSelectSubcategorie = (subcategorie) => {
-    setForm({ ...form, subcategorie });
-    console.log(form);
-  };
-  const handleSelectTransaction = (transaction) => {
-    setForm({ ...form, transaction });
-    console.log(form);
-  };
-  const handleSelectPays = (pays) => {
-    setForm({ ...form, pays });
-    console.log(form);
-  };
+
   useEffect(() => {
-    if (isEmpty(form)) {
+    if (Object.values(form).every(value => value !== "" && value !== null)) {
       n();
-    } else f();
+      dispatch(updateStepOneData(form))
+    } else {
+      f();
+    }
   }, [form]);
 
   return (
@@ -112,8 +72,8 @@ const PropertyDescription = ({ s, n, f }) => {
               type="text"
               className="form-control"
               placeholder="Titre de l'offre"
-              name="offertitle"
-              value={form.offertitle}
+              name="title"
+              value={form.title}
               onChange={handleChange}
             />
           </div>
@@ -122,9 +82,7 @@ const PropertyDescription = ({ s, n, f }) => {
 
         <div className="col-sm-12">
           <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">
-              Description
-            </label>
+            <label className="heading-color ff-heading fw600 mb10">Description</label>
             <textarea
               cols={30}
               rows={5}
@@ -139,20 +97,17 @@ const PropertyDescription = ({ s, n, f }) => {
 
         <div className="col-sm-6 col-xl-4">
           <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">
-              Choisir une catégorie
-            </label>
+            <label className="heading-color ff-heading fw600 mb10">Choisir une catégorie</label>
             <div className="location-area">
               <Select
-                // defaultValue={[catergoryOptions[1]]}
-                name="categorie"
-                options={catergoryOptions}
+                name="category"
+                options={categoryOptions}
                 styles={customStyles}
                 className="select-custom pl-0"
                 classNamePrefix="select"
                 required
-                value={form.categorie}
-                onChange={handleSelectCategorie}
+                value={form.category}
+                onChange={(value) => handleSelectChange("category", value)}
               />
             </div>
           </div>
@@ -160,20 +115,17 @@ const PropertyDescription = ({ s, n, f }) => {
         {/* End .col-6 */}
         <div className="col-sm-6 col-xl-4">
           <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">
-              Choisir une sous catégorie
-            </label>
+            <label className="heading-color ff-heading fw600 mb10">Choisir une sous catégorie</label>
             <div className="location-area">
               <Select
-                defaultValue={[catergoryOptions[1]]}
-                name="subcategoorie"
-                options={catergoryOptions}
+                name="subcategory"
+                options={categoryOptions}
                 styles={customStyles}
                 className="select-custom pl-0"
                 classNamePrefix="select"
                 required
-                value={form.subcategorie}
-                onChange={handleSelectSubcategorie}
+                value={form.subcategory}
+                onChange={(value) => handleSelectChange("subcategory", value)}
               />
             </div>
           </div>
@@ -181,20 +133,17 @@ const PropertyDescription = ({ s, n, f }) => {
 
         <div className="col-sm-6 col-xl-4">
           <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">
-              Type de transaction
-            </label>
+            <label className="heading-color ff-heading fw600 mb10">Type de transaction</label>
             <div className="location-area">
               <Select
-                defaultValue={[listedIn[1]]}
-                name="transaction"
+                name="transactionType"
                 options={listedIn}
                 styles={customStyles}
                 className="select-custom pl-0"
                 classNamePrefix="select"
                 required
-                value={form.transaction}
-                onChange={handleSelectTransaction}
+                value={form.transactionType}
+                onChange={(value) => handleSelectChange("transactionType", value)}
               />
             </div>
           </div>
@@ -206,15 +155,14 @@ const PropertyDescription = ({ s, n, f }) => {
             <label className="heading-color ff-heading fw600 mb10">Pays</label>
             <div className="location-area">
               <Select
-                defaultValue={[PropertyStatus[1]]}
-                name="pays"
+                name="country"
                 options={PropertyStatus}
                 styles={customStyles}
                 className="select-custom pl-0"
                 classNamePrefix="select"
                 required
-                value={form.pays}
-                onChange={handleSelectPays}
+                value={form.country}
+                onChange={(value) => handleSelectChange("country", value)}
               />
             </div>
           </div>
@@ -245,24 +193,7 @@ const PropertyDescription = ({ s, n, f }) => {
           </div>
         </div>
 
-        {/* End .col-6 */}
-
-        <div className="col-sm-6 col-xl-4">
-          <a
-            // href="/offres"
-            style={{
-              display: "inline-block",
-              marginTop: "70px",
-              marginLeft: "246px",
-            }}
-          >
-            {/* <button type="button" className="btn ud-btn btn-thm" >
-              Suivant
-              <i className="fal fa-arrow-right-long" />
-            </button> */}
-          </a>
-        </div>
-        {/* End .col-6 */}
+        
 
         <div className="col-sm-6 col-xl-4"></div>
         {/* End .col-6 */}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import UploadPhotoGallery from "./UploadPhotoGallery";
 import VideoOptionFiled from "./VideoOptionFiled";
 
-const UploadMedia = ({m,setM}) => {
+const UploadMedia = ({updateForm, m, setM}) => {
 console.log(m)
   return (
     <>
@@ -13,7 +13,7 @@ console.log(m)
         <form className="form-style1">
           <div className="row">
             <div className="col-lg-12">
-              <UploadPhotoGallery m={m} setM={setM}/>
+              <UploadPhotoGallery updateForm={updateForm} m={m} setM={setM}/>
             </div>
           </div>
         </form>
