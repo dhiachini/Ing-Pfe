@@ -7,7 +7,7 @@ const extractUserID = (req) => {
   const token = req.header("x-auth-token");
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
   console.log(decoded);
-  return decoded;
+  return decoded.user.id;
 };
 
 // Create offer
@@ -25,10 +25,13 @@ const createOffer = async (req, res) => {
       latitude,
       longitude,
     } = req.body;
+    const imagesFromSource = req.files ?? req.body.images;
 
-    const uploadPromises = req.files.map(img => cloudinary.uploader.upload(img.path));
+    const uploadPromises = imagesFromSource.map((img) =>
+      cloudinary.uploader.upload(img.path)
+    );
     const result = await Promise.all(uploadPromises);
-    const imageUrls = result.map(res => res.secure_url);
+    const imageUrls = result.map((res) => res.secure_url);
     // Create offer object
     const offer = new Offer({
       title,
@@ -41,7 +44,7 @@ const createOffer = async (req, res) => {
       latitude,
       longitude,
       images: imageUrls,
-      userID: userID.user.id,
+      userID: userID,
     });
 
     // Save offer
