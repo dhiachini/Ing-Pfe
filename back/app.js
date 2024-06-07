@@ -9,7 +9,8 @@ const routerAccountRequests = require("./routes/accountrequest.route");
 const uploadRouter = require("./routes/accountrequest.route");
 const authRouter = require("./routes/auth.route");
 const routeroffer = require("./routes/offer.route");
-
+const routerdemande = require("./routes/demandes.route")
+const routerformservice = require("./routes/formservice.route")
 var app = express();
 
 app.use(logger("dev"));
@@ -28,5 +29,8 @@ app.use("/api", routerAccountRequests);
 app.use("/upload", uploadRouter);
 app.use("/api/auth", authRouter);
 app.use("/api", routeroffer);
+app.use("/api", routerdemande);
+app.use("/api", routerformservice);
+
 
 module.exports = app;
