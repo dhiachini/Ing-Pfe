@@ -45,7 +45,7 @@ const Home_V9 = () => {
                     Découvrez comment ALGÉTUN peut vous aider
                   </h2>
                   <p className="paragraph">
-                    Aliquam lacinia diam quis lacus euismod
+                  ALGÉTUN est votre passerelle vers un échange économique et un investissement prospère entre la Tunisie et l'Algérie
                   </p>
                 </div>
               </div>

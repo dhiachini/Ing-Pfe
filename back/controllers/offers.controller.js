@@ -5,8 +5,8 @@ const cloudinary = require("cloudinary");
 // Function to extract userID from JWT token
 const extractUserID = (req) => {
   const token = req.header("x-auth-token");
+  if (!token) return null; // Return null if no token is provided
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
-  console.log(decoded);
   return decoded.user.id;
 };
 
@@ -14,6 +14,8 @@ const extractUserID = (req) => {
 const createOffer = async (req, res) => {
   try {
     const userID = extractUserID(req);
+    if (!userID) return res.status(401).json({ error: "Unauthorized" });
+
     const {
       title,
       description,
@@ -25,6 +27,7 @@ const createOffer = async (req, res) => {
       latitude,
       longitude,
     } = req.body;
+
     const imagesFromSource = req.files ?? req.body.images;
 
     const uploadPromises = imagesFromSource.map((img) =>
@@ -32,6 +35,7 @@ const createOffer = async (req, res) => {
     );
     const result = await Promise.all(uploadPromises);
     const imageUrls = result.map((res) => res.secure_url);
+
     // Create offer object
     const offer = new Offer({
       title,
@@ -60,6 +64,8 @@ const createOffer = async (req, res) => {
 const deleteOffer = async (req, res) => {
   try {
     const userID = extractUserID(req);
+    if (!userID) return res.status(401).json({ error: "Unauthorized" });
+
     const offer = await Offer.findOneAndDelete({ _id: req.params.id, userID });
     if (!offer) {
       return res
@@ -77,6 +83,8 @@ const deleteOffer = async (req, res) => {
 const updateOffer = async (req, res) => {
   try {
     const userID = extractUserID(req);
+    if (!userID) return res.status(401).json({ error: "Unauthorized" });
+
     const {
       title,
       description,
@@ -124,10 +132,12 @@ const updateOffer = async (req, res) => {
   }
 };
 
-// Find all offers
+// Find all offers for specific user
 const FindAllOffers = async (req, res) => {
   try {
     const userID = extractUserID(req);
+    if (!userID) return res.status(401).json({ error: "Unauthorized" });
+
     const offers = await Offer.find({ userID });
     res.status(200).json(offers);
   } catch (error) {
@@ -140,6 +150,8 @@ const FindAllOffers = async (req, res) => {
 const FindSingleOffer = async (req, res) => {
   try {
     const userID = extractUserID(req);
+    if (!userID) return res.status(401).json({ error: "Unauthorized" });
+
     const offer = await Offer.findOne({ _id: req.params.id, userID });
     if (!offer) {
       return res
@@ -153,10 +165,22 @@ const FindSingleOffer = async (req, res) => {
   }
 };
 
+// Find all offers for all users
+const findAllOffersForAllUsers = async (req, res) => {
+  try {
+    const offers = await Offer.find({});
+    res.status(200).json(offers);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
 module.exports = {
   createOffer,
   deleteOffer,
   updateOffer,
   FindAllOffers,
   FindSingleOffer,
+  findAllOffersForAllUsers,
 };
