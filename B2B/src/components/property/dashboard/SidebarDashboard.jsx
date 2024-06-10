@@ -55,11 +55,11 @@ const SidebarDashboard = () => {
           icon: "flaticon-search-2",
           text: "Recherches Enregistrée",
         },
-        {
-          href: "/dashboard-reviews",
-          icon: "flaticon-review",
-          text: "Reviews",
-        },
+        // {
+        //   href: "/dashboard-reviews",
+        //   icon: "flaticon-review",
+        //   text: "Reviews",
+        // },
       ],
     },
     {
@@ -68,7 +68,7 @@ const SidebarDashboard = () => {
         {
           href: "/dashboard-my-package",
           icon: "flaticon-protection",
-          text: "Mon Colis",
+          text: "mes fiches service",
         },
         {
           href: "/dashboard-my-profile",

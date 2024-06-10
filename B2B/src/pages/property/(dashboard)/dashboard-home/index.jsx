@@ -16,7 +16,7 @@ const metaInformation = {
 const DashboardHome = () => {
   return (
     <>
-    <MetaData meta={metaInformation} />
+      <MetaData meta={metaInformation} />
       {/* Main Header Nav */}
       <DashboardHeader />
       {/* End Main Header Nav */}
@@ -66,7 +66,7 @@ const DashboardHome = () => {
 
                 <div className="col-xl-4">
                   <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                    <h4 className="title fz17 mb25">Recent Activities</h4>
+                    <h4 className="title fz17 mb25">Activités récentes</h4>
                     <RecentActivities />
                   </div>
                 </div>

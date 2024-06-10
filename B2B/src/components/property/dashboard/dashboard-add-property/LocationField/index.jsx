@@ -1,21 +1,24 @@
 import React, { useState } from "react";
-import SelectMulitField from "./SelectMulitField";
-import Map from "./Map";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createOffer } from "../../../../../../Redux/Actions/offersActions";
+import Map from "./Map";
 
 const LocationField = ({ n, f, handleSubmit, updateForm }) => {
   const [latInput, setLatInput] = useState("");
   const [lngInput, setLngInput] = useState("");
   const dispatch = useDispatch();
+  const offerData = useSelector((state) => state.offers); // Get the offer data from the state
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const offerData = {
-      latitude: latInput,
-      longitude: lngInput,
+    const offerDetails = {
+      ...offerData,
+      stepThreeData: {
+        latitude: latInput,
+        longitude: lngInput,
+      },
     };
-    dispatch(createOffer(offerData));
+    dispatch(createOffer(offerDetails)); // Pass the updated offer data to the action
   };
 
   return (

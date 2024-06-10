@@ -12,7 +12,7 @@ const statisticsData = [
     icon: "flaticon-search-chart",
   },
   {
-    text: "Avis utilisateurs",
+    text: "Fiches service",
     title: "438",
     icon: "flaticon-review",
   },

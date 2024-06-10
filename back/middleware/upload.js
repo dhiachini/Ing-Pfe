@@ -24,7 +24,10 @@ router.post('/upload', upload.single('patent'), (req, res) => {
 
 
 // Initialize multer
-const uploadMultiple = multer({ storage: storage });
+const uploadMultiple = multer({ 
+  storage: storage,
+  limits: { fileSize: 10 * 1024 * 1024 } // Set file size limit to 10MB
+});
 
 // Route to handle file upload
 router.post('/uploadMultiple', uploadMultiple.array('images', 5), (req, res) => {
