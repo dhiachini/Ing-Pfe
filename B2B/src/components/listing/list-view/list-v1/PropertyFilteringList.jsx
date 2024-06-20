@@ -1,11 +1,8 @@
-
-
 import listings from "@/data/listings";
 import React, { useState, useEffect } from "react";
 import ListingSidebar from "../../sidebar";
 import TopFilterBar from "./TopFilterBar";
 import FeaturedListings from "./FeatuerdListings";
-import PaginationTwo from "../../PaginationTwo";
 
 export default function PropertyFilteringList() {
   const [filteredData, setFilteredData] = useState([]);
@@ -183,22 +180,6 @@ export default function PropertyFilteringList() {
           ),
     ];
 
-    // if (location != "All Cities") {
-    //   filteredArrays = [
-    //     ...filteredArrays,
-    //     refItems.filter((el) => el.city == location),
-    //   ];
-    // }
-
-    // if (priceRange.length > 0) {
-    //   const filtered = refItems.filter(
-    //     (elm) =>
-    //       Number(elm.price.split("$")[1].split(",").join("")) >=
-    //         priceRange[0] &&
-    //       Number(elm.price.split("$")[1].split(",").join("")) <= priceRange[1]
-    //   );
-    //   filteredArrays = [...filteredArrays, filtered];
-    // }
     if (squirefeet.length > 0 && squirefeet[1]) {
       const filtered = refItems.filter(
         (elm) => elm.sqft >= squirefeet[0] && elm.sqft <= squirefeet[1]
@@ -268,23 +249,23 @@ export default function PropertyFilteringList() {
 
             {/* start mobile filter sidebar */}
             <div
-                className="offcanvas offcanvas-start p-0"
+              className="offcanvas offcanvas-start p-0"
               tabIndex="-1"
               id="listingSidebarFilter"
               aria-labelledby="listingSidebarFilterLabel"
             >
-              <div   className="offcanvas-header">
-                <h5   className="offcanvas-title" id="listingSidebarFilterLabel">
+              <div className="offcanvas-header">
+                <h5 className="offcanvas-title" id="listingSidebarFilterLabel">
                   Listing Filter
                 </h5>
                 <button
                   type="button"
-                    className="btn-close text-reset"
+                  className="btn-close text-reset"
                   data-bs-dismiss="offcanvas"
                   aria-label="Close"
                 ></button>
               </div>
-              <div   className="offcanvas-body p-0">
+              <div className="offcanvas-body p-0">
                 <ListingSidebar filterFunctions={filterFunctions} />
               </div>
             </div>
@@ -306,14 +287,6 @@ export default function PropertyFilteringList() {
               </div>
               {/* End .row */}
 
-              <div className="row">
-                <PaginationTwo
-                  pageCapacity={6}
-                  data={sortedFilteredData}
-                  pageNumber={pageNumber}
-                  setPageNumber={setPageNumber}
-                />
-              </div>
               {/* End .row */}
             </div>
             {/* End .col-lg-8 */}

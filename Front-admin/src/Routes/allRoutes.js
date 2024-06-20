@@ -238,33 +238,18 @@ import UserProfile from "../pages/Authentication/user-profile";
 
 import FileManager from "../pages/FileManager";
 import ToDoList from "../pages/ToDo";
-import ListeClient from "../gestion-client/ListeClient";
 import DetailsDemandesCompte from "../gestion-client/DetailsDemandesCompte";
-import EditProject from "../gestion-client/EditProject";
-import ProjectDetails from "../gestion-client/ProjectDetails";
-import AddClient from "../gestion-client/AddClient";
-import ListeReclamation from "../gestion-client/ListeReclamations";
-import ReclamationDetails from "../gestion-client/ReclamationDetails";
-import AddReclamation from "../gestion-client/AddReclamation";
-import ListeIntervention from "../gestion-client/ListeIntervention";
-import AddIntervention from "../gestion-client/AddIntervention";
 import ListeDemandescompte from "../gestion-client/ListeDemandescompte";
+import ListeOffres from "../gestion-client/ListeOffres";
 
 const authProtectedRoutes = [
   { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   { path: "/dashboard-crm", component: <DashboardCrm /> },
-  { path: "/clients", component: <ListeClient /> },
-  { path: "/editproject", component: <EditProject /> },
-  { path: "/addclient", component: <AddClient /> },
-  { path: "/projectdetails", component: <ProjectDetails /> },
-  { path: "/reclamation", component: <ListeReclamation /> },
-  { path: "/addreclamation", component: <AddReclamation /> },
-  { path: "/reclamationdetails", component: <ReclamationDetails /> },
-  { path: "/interventions", component: <ListeIntervention /> },
-  { path: "/addintervention", component: <AddIntervention /> },
+
   { path: "/demandescompte", component: <ListeDemandescompte /> },
-  { path: "/detailsdemandecompte", component: <DetailsDemandesCompte /> },
   { path: "/detailsdemandecompte/:id", component: <DetailsDemandesCompte /> },
+  { path: "/listeoffres", component: <ListeOffres /> },
+  
   { path: "/dashboard", component: <DashboardEcommerce /> },
   { path: "/index", component: <DashboardEcommerce /> },
   { path: "/dashboard-crypto", component: <DashboardCrypto /> },

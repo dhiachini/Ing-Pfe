@@ -55,9 +55,7 @@ const MyOffers = () => {
                   <div className="packages_table table-responsive">
                     <MyoffresDataTable />
 
-                    <div className="mt30">
-                      <Pagination />
-                    </div>
+                   
                   </div>
                 </div>
               </div>

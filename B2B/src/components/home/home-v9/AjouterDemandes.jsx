@@ -8,17 +8,21 @@ import AddPropertyTabContent from "@/components/property/dashboard/dashboard-add
 import MetaData from "@/components/common/MetaData";
 import DashboardHeader from "@/components/common/DashboardHeader";
 import AdddemandeTabContent from "@/components/property/dashboard/dashboard-add-property/AdddemandeTabContent";
+import { useEffect } from "react";
 
 const metaInformation = {
   title: "Ajouter demande || Plateforme d'échange Algéro - Tunisienne",
 };
 
 const AjouterDemandes = () => {
+  useEffect(() => {
+    localStorage.setItem("typePost", 0);
+  }, []);
   return (
     <>
-    <MetaData meta={metaInformation} />
+      <MetaData meta={metaInformation} />
       {/* Main Header Nav */}
-      <DashboardHeader/>
+      <DashboardHeader />
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}
@@ -30,7 +34,6 @@ const AjouterDemandes = () => {
         <div className="dashboard dashboard_wrapper pr30 pr0-md">
           <SidebarDashboard />
           {/* End .dashboard__sidebar */}
-          
 
           <div className="dashboard__main pl0-md">
             <div className="dashboard__content property-page bgc-f7">
@@ -64,10 +67,8 @@ const AjouterDemandes = () => {
               {/* End .row */}
             </div>
             {/* End dashboard__content */}
-
-            
           </div>
-          
+
           {/* End .dashboard__main */}
         </div>
       </div>

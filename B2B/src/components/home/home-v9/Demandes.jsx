@@ -1,16 +1,19 @@
 import DashboardHeader from "@/components/common/DashboardHeader";
-import Footer from "./footer";
+import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 import PropertyFilteringList from "@/components/listing/list-view/list-v1/PropertyFilteringList";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import MetaData from "@/components/common/MetaData";
 
 const metaInformation = {
   title: "List offres || Plateforme d'échange Algéro - Tunisienne",
 };
 
-const Demandes = () => {
+const Demandes= () => {
+  useEffect(() => {
+    localStorage.setItem("typeGet", 0);
+  }, []);
   return (
     <>
       <MetaData meta={metaInformation} />
@@ -65,10 +68,9 @@ const Demandes = () => {
       </div>
 
       {/* Property Filtering */}
-      <div style={{ "margin-top": "40px" }}>
-        {/* Start Our Footer */}
+      <section className="footer-style1 pt60 pb-0">
         <Footer />
-        </div>
+      </section>
 
       {/* End Our Footer */}
     </>

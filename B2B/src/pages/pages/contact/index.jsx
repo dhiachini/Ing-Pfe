@@ -1,6 +1,6 @@
 import CallToActions from "@/components/common/CallToActions";
 import DashboardHeader from "@/components/common/DashboardHeader";
-import Footer from "@/components/property/dashboard/Footer";
+import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 import Form from "@/components/pages/contact/Form";
 import Office from "@/components/pages/contact/Office";
@@ -98,7 +98,9 @@ const Contact = () => {
 
       {/* Start Our Footer */}
      
+      <section className="footer-style1 pt60 pb-0">
         <Footer />
+      </section>
      
       {/* End Our Footer */}
     </>

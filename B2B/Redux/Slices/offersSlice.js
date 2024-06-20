@@ -1,11 +1,16 @@
-// offersSlice.js
-
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchOffers } from "../../Redux/Actions/offersActions"; 
+import {
+  DELETE_OFFER_REQUEST,
+  DELETE_OFFER_SUCCESS,
+  DELETE_OFFER_FAILURE,
+} from "../../Redux/Actions/offersActions"; 
 
 const initialState = {
   stepOneData: {},
   stepTwoData: [],
   stepThreeData: {},
+  offers: [],
   loading: false,
   error: null,
 };
@@ -38,6 +43,32 @@ const offersSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+  },
+  
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchOffers.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchOffers.fulfilled, (state, action) => {
+        state.loading = false;
+        state.offers = action.payload;
+      })
+      .addCase(fetchOffers.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(DELETE_OFFER_REQUEST, (state) => {
+        state.loading = true;
+      })
+      .addCase(DELETE_OFFER_SUCCESS, (state, action) => {
+        state.loading = false;
+        state.offers = state.offers.filter((offer) => offer._id !== action.payload);
+      })
+      .addCase(DELETE_OFFER_FAILURE, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
 });
 

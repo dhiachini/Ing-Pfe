@@ -60,7 +60,7 @@ const PropertyDescription = ({ updateForm, s, n, f }) => {
   const handleSelectChange = (name, value) => {
     setForm({ ...form, [name]: value });
   };
-
+  console.log(form);
   useEffect(() => {
     const {
       title,
@@ -212,9 +212,9 @@ const PropertyDescription = ({ updateForm, s, n, f }) => {
         <div className="col-sm-6 col-xl-4">
           <div className="mb30">
             <label className="heading-color ff-heading fw600 mb10">
-              {form.transaction && form.transaction.label === "Investissement"
+              {form.transactionType && form.transactionType.label === "Investissement"
                 ? "Capital"
-                : form.pays && form.pays.label === "Algérie"
+                : form.country && form.country.label === "Algérie"
                 ? "Prix en DZD"
                 : "Prix en TND"}
             </label>
@@ -222,7 +222,7 @@ const PropertyDescription = ({ updateForm, s, n, f }) => {
               type="text"
               className="form-control"
               placeholder={
-                form.transaction && form.transaction.label === "Investissement"
+                form.transactionType && form.transactionType.label === "Investissement"
                   ? "Entrer votre Capital"
                   : "Entrer le prix"
               }

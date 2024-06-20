@@ -1,94 +1,102 @@
-
-
-
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchAllUsersOffers } from "../../../../../Redux/Actions/offersActions";
+import PaginationTwo from "../../PaginationTwo";
 
-const FeaturedListings = ({ data, colstyle }) => {
+const FeaturedListings = ({ colstyle }) => {
+  const dispatch = useDispatch();
+  const { offers, loading, error } = useSelector((state) => state.offers);
+  const [pageNumber, setPageNumber] = useState(1);
+  const pageCapacity = 5; // Nombre d'offres par page
+
+  useEffect(() => {
+    dispatch(fetchAllUsersOffers());
+  }, [dispatch]);
+
+  if (loading) return <p>Chargement...</p>;
+  if (error) return <p>Erreur lors du chargement des offres : {error}</p>;
+
+  // Calculer les données paginées
+  const paginatedData = offers.slice(
+    (pageNumber - 1) * pageCapacity,
+    pageNumber * pageCapacity
+  );
+
   return (
     <>
-      {data.map((listing) => (
-        <div
-          className={` ${colstyle ? "col-sm-6 col-lg-6" : "col-sm-12"}  `}
-          key={listing.id}
-        >
+      <div className="row">
+        {paginatedData.map((listing) => (
           <div
-            className={
-              colstyle
-                ? "listing-style1"
-                : "listing-style1 listCustom listing-type"
-            }
+            className={` ${colstyle ? "col-sm-6 col-lg-6" : "col-sm-12"}  `}
+            key={listing.id}
           >
-            <div className="list-thumb">
-              <img
-              
-                className="w-100  cover"
-                style={{ height: "253px" }}
-                src={listing.image}
-                alt="listings"
-              />
-              <div className="sale-sticker-wrap">
-                {!listing.forRent && (
-                  <div className="list-tag fz12">
-                    <span className="flaticon-electricity me-2" />
-                    En vedette
-                  </div>
-                )}
-              </div>
-
-              <div className="list-price">
-                {listing.price} <span>TND</span>
-              </div>
-            </div>
-            <div className="list-content">
-              <h6 className="list-title">
-              <Link to={`/detailsoffre`}>{listing.title}</Link>
-
-              </h6>
-              {/* <p className="list-text">{listing.location}</p> */}
-              <p className="list-text">
-                Date de publication : 05/02/2024
-                </p>
-               
-              {/* <div className="list-meta d-flex align-items-center">
-                <a href="#">
-                  <span className="flaticon-bed" /> {listing.bed} bed
-                </a>
-                <a href="#">
-                  <span className="flaticon-shower" /> {listing.bath} bath
-                </a>
-                <a href="#">
-                  <span className="flaticon-expand" /> {listing.sqft} sqft
-                </a>
-              </div> */}
-              <p className="list-text2">
-                An exceptional exclusive five bedroom apartment for sale in this
-                much sought after development in Knightsbridge.
-              </p>
-              <hr className="mt-2 mb-2" />
-              <div className="list-meta2 d-flex justify-content-between align-items-center">
-                {/* <span className="for-what">For Rent</span> */}
-                <div className="icons d-flex align-items-center">
-                  {/* <a href="#">
-                    <span className="flaticon-fullscreen" />
-                  </a>
-                  <a href="#">
-                    <span className="flaticon-new-tab" />
-                  </a> */}
-                  <a href="#">
-                    <span className="flaticon-like" />
-                  </a>
-                  
+            <div
+              className={
+                colstyle
+                  ? "listing-style1"
+                  : "listing-style1 listCustom listing-type"
+              }
+            >
+              <div className="list-thumb">
+                <img
+                  className="w-100 cover"
+                  style={{ height: "253px" }}
+                  src={listing.images[0]}
+                  alt="listings"
+                />
+                <div className="sale-sticker-wrap">
+                  {!listing.forRent && (
+                    <div className="list-tag fz12">
+                      <span className="flaticon-electricity me-2" />
+                      En vedette
+                    </div>
+                  )}
                 </div>
-                <div>
-                <p style={{"color":"red"}} className="list-text">
-                Date d'expiration : 05/02/2024
+
+                <div className="list-price">
+                  {listing.price} <span>TND</span>
+                </div>
+              </div>
+              <div className="list-content">
+                <h6 className="list-title">
+                  <Link to={`/detailsoffre`}>{listing.title}</Link>
+                </h6>
+
+                <p className="list-text2">
+                  An exceptional exclusive five bedroom apartment for sale in this
+                  much sought after development in Knightsbridge.
                 </p>
+                <p className="list-text">
+                  Date de publication : {new Date(listing.createdAt).toLocaleDateString()}
+                </p>
+                <hr className="mt-2 mb-2" />
+                <div className="list-meta2 d-flex justify-content-between align-items-center">
+                  <div className="icons d-flex align-items-center">
+                    <a href="#">
+                      <span className="flaticon-like" />
+                    </a>
+                  </div>
+                  <div>
+                    <p style={{ color: "red" }} className="list-text">
+                      Date d'expiration : {new Date(new Date(listing.createdAt).setDate(new Date(listing.createdAt).getDate() + 15)).toLocaleDateString()}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      <div className="row">
+        <PaginationTwo
+          pageCapacity={pageCapacity}
+          data={offers}
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+        />
+      </div>
     </>
   );
 };

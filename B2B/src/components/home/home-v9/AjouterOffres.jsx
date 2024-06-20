@@ -4,6 +4,7 @@ import SidebarDashboard from "@/components/property/dashboard/SidebarDashboard";
 import AddPropertyTabContent from "@/components/property/dashboard/dashboard-add-property";
 import MetaData from "@/components/common/MetaData";
 import DashboardHeader from "@/components/common/DashboardHeader";
+import { useEffect } from "react";
 
 
 const metaInformation = {
@@ -11,6 +12,9 @@ const metaInformation = {
 };
 
 const AjouterOffres = () => {
+  useEffect(() => {
+    localStorage.setItem("typePost", 1);
+  }, []);
   return (
     <>
       <MetaData meta={metaInformation} />

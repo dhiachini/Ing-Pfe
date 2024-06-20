@@ -10,6 +10,8 @@ router.post('/demandes', authenticateToken, uploadMultiple.array('images'), dema
 router.delete('/demandes/:id', authenticateToken, demandeController.deleteDemande);
 router.put('/demandes/:id', authenticateToken, uploadMultiple.array('images'), demandeController.updateDemande);
 router.get('/demandes', authenticateToken, demandeController.FindAllDemandes);
+router.get('/demandes/all', demandeController.findAllDemandesForAllUsers);
 router.get('/demandes/:id', authenticateToken, demandeController.FindSingleDemande);
+
 
 module.exports = router;

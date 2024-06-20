@@ -18,32 +18,34 @@ const ListeDemandescompte = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:3700/api/accountrequests"
-        );
-        console.log("API Response:", response);
-
-        if (Array.isArray(response)) {
-          console.log("API Response Data:", response);
-          setData(response);
-        } else {
-          console.error("Response data is not an array:", response);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+    
 
     fetchData();
-  }, [data]);
+  }, []);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3700/api/accountrequests"
+      );
+      console.log("API Response:", response);
+
+      if (Array.isArray(response)) {
+        console.log("API Response Data:", response);
+        setData(response);
+      } else {
+        console.error("Response data is not an array:", response);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const handleAccepterAction = async (id) => {
     try {
       await axios.put(`http://localhost:3700/api/accountrequests/${id}/accept`);
 
       toast.success("Demande de compte acceptée", { autoClose: 1500 });
+      fetchData()
     } catch (error) {
       console.error("Error updating status:", error);
     }
@@ -54,6 +56,7 @@ const ListeDemandescompte = () => {
       await axios.put(`http://localhost:3700/api/accountrequests/${id}/refuse`);
 
       toast.error("Demande de compte refusée ", { autoClose: 1500 });
+      fetchData()
     } catch (error) {
       console.error("Error updating status:", error);
     }

@@ -95,7 +95,7 @@ function DetailsDemandesCompte() {
     <div className="page-content">
       <Container fluid>
         <BreadCrumb
-          title="Détails demandes de compte administrateur"
+          title="Détails demandes de compte "
           pageTitle="Liste demandes de comptes"
         />
 

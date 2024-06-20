@@ -9,5 +9,6 @@ export const requestAction = (requestData) => async (dispatch) => {
     })
     .catch((error) => {
       dispatch(errors(error.response.data));
+      // window.location.reload();
     });
 };

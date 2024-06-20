@@ -11,6 +11,7 @@ export const loginAction = (credentials) => async (dispatch) => {
     const { token } = response.data;
     localStorage.setItem("token", token); // Save token to local storage
     dispatch(loginSuccess({ token }));
+    window.location.reload();
   } catch (error) {
     dispatch(
       loginFailure(error.response?.data?.msg || "Authentication failed")

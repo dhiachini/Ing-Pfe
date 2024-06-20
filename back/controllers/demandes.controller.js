@@ -3,8 +3,10 @@ const jwt = require("jsonwebtoken");
 const cloudinary = require("cloudinary");
 
 // Function to extract userID from JWT token
+// Function to extract userID from JWT token
 const extractUserID = (req) => {
   const token = req.header("x-auth-token");
+  if (!token) return null; // Return null if no token is provided
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
   return decoded.user.id;
 };
@@ -13,6 +15,8 @@ const extractUserID = (req) => {
 const createDemande = async (req, res) => {
   try {
     const userID = extractUserID(req);
+    if (!userID) return res.status(401).json({ error: "Unauthorized" });
+
     const {
       title,
       description,
@@ -59,6 +63,8 @@ const createDemande = async (req, res) => {
 const deleteDemande = async (req, res) => {
   try {
     const userID = extractUserID(req);
+    if (!userID) return res.status(401).json({ error: "Unauthorized" });
+
     const demande = await Demande.findOneAndDelete({ _id: req.params.id, userID });
     if (!demande) {
       return res
@@ -76,6 +82,8 @@ const deleteDemande = async (req, res) => {
 const updateDemande = async (req, res) => {
   try {
     const userID = extractUserID(req);
+    if (!userID) return res.status(401).json({ error: "Unauthorized" });
+
     const {
       title,
       description,
@@ -122,10 +130,12 @@ const updateDemande = async (req, res) => {
   }
 };
 
-// Find all demandes
+// Find all demandes for specific user
 const FindAllDemandes = async (req, res) => {
   try {
     const userID = extractUserID(req);
+    if (!userID) return res.status(401).json({ error: "Unauthorized" });
+
     const demandes = await Demande.find({ userID });
     res.status(200).json(demandes);
   } catch (error) {
@@ -138,6 +148,8 @@ const FindAllDemandes = async (req, res) => {
 const FindSingleDemande = async (req, res) => {
   try {
     const userID = extractUserID(req);
+    if (!userID) return res.status(401).json({ error: "Unauthorized" });
+
     const demande = await Demande.findOne({ _id: req.params.id, userID });
     if (!demande) {
       return res
@@ -151,10 +163,23 @@ const FindSingleDemande = async (req, res) => {
   }
 };
 
+// Find all demandes for all users
+const findAllDemandesForAllUsers = async (req, res) => {
+  try {
+    console.log("findAllDemandesForAllUsers called"); // Add this line for debugging
+    const demandes = await Demande.find({});
+    res.status(200).json(demandes);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
 module.exports = {
   createDemande,
   deleteDemande,
   updateDemande,
   FindAllDemandes,
   FindSingleDemande,
+  findAllDemandesForAllUsers,
 };

@@ -1,9 +1,9 @@
 import DashboardHeader from "@/components/common/DashboardHeader";
-import Footer from "./footer";
+import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 import PropertyFilteringList from "@/components/listing/list-view/list-v1/PropertyFilteringList";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import MetaData from "@/components/common/MetaData";
 
 const metaInformation = {
@@ -11,6 +11,9 @@ const metaInformation = {
 };
 
 const Offres = () => {
+  useEffect(() => {
+    localStorage.setItem("typeGet", 1);
+  }, []);
   return (
     <>
       <MetaData meta={metaInformation} />
@@ -65,10 +68,9 @@ const Offres = () => {
       </div>
 
       {/* Property Filtering */}
-      <div style={{ "margin-top": "40px" }}>
-        {/* Start Our Footer */}
+      <section className="footer-style1 pt60 pb-0">
         <Footer />
-        </div>
+      </section>
 
       {/* End Our Footer */}
     </>
