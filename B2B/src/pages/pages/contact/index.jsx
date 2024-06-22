@@ -28,11 +28,12 @@ const Contact = () => {
         <iframe
           className="home8-map contact-page"
           loading="lazy"
-          src="https://maps.google.com/maps?q=London%20Eye%2C%20London%2C%20United%20Kingdom&t=m&z=14&output=embed&iwloc=near"
-          title="London Eye, London, United Kingdom"
-          aria-label="London Eye, London, United Kingdom"
+          src="https://maps.google.com/maps?q=Sousse%2C%20Tunisia&t=m&z=14&output=embed&iwloc=near"
+          title="ALGETUN bureau"
+          aria-label="ALGETUN bureau"
         />
       </section>
+
       {/* End Our Contact With Map */}
 
       {/* Start Our Contact Form */}
@@ -52,11 +53,13 @@ const Contact = () => {
 
             <div className="col-lg-5 offset-lg-2">
               <h2 className="mb30 text-capitalize">
-              Nous serions ravis de vous <br className="d-none d-lg-block" />
-               entendre.
+                Nous serions ravis de vous <br className="d-none d-lg-block" />
+                entendre.
               </h2>
               <p className="text">
-              Une fois que vous avez soumis votre formulaire, notre équipe le recevra rapidement et vous contactera pour garantir que vos besoins en matière de service sont efficacement pris en charge.
+                Une fois que vous avez soumis votre formulaire, notre équipe le
+                recevra rapidement et vous contactera pour garantir que vos
+                besoins en matière de service sont efficacement pris en charge.
               </p>
             </div>
             {/* End .col */}
@@ -77,7 +80,8 @@ const Contact = () => {
               <div className="main-title text-center">
                 <h2 className="title">Visitez notre bureau</h2>
                 <p className="paragraph">
-                TunAl dispose d'un bureau unique, adaptable à toutes les tailles et à tous les besoins de sessions possibles.
+                  TunAl dispose d'un bureau unique, adaptable à toutes les
+                  tailles et à tous les besoins de sessions possibles.
                 </p>
               </div>
             </div>
@@ -97,11 +101,11 @@ const Contact = () => {
       {/* Our CTA */}
 
       {/* Start Our Footer */}
-     
+
       <section className="footer-style1 pt60 pb-0">
         <Footer />
       </section>
-     
+
       {/* End Our Footer */}
     </>
   );

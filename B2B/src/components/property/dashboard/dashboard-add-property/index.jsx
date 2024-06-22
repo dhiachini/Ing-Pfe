@@ -133,7 +133,7 @@ const AddPropertyTabContent = () => {
           aria-labelledby="nav-item3-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
-            <h4 className="title fz17 mb30">Emplacement de l'offre</h4>
+            <h4 className="title fz17 mb30">Emplacement</h4>
             <LocationField
               setFormData={setFormData}
               formData={formData}

@@ -127,7 +127,7 @@ function App() {
               <Route path="mesoffres" element={<MyOffers />} />
               <Route path="ajouterdemandes" element={<AjouterDemandes />} />
               <Route path="mesdemandes" element={<MyDemandes />} />
-              <Route path="detailsoffre" element={<OfferDetails />} />
+              <Route path="detailsoffre/:id" element={<OfferDetails />} />
               <Route path="demandes" element={<Demandes />} />
 
               <Route path="grid-default" element={<GridDefault />} />

@@ -8,7 +8,7 @@ console.log(m)
     <>
       <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
         <h4 className="title fz17 mb30">
-          Téléchargez des photos de votre offre
+          Téléchargez des photos
         </h4>
         <form className="form-style1">
           <div className="row">

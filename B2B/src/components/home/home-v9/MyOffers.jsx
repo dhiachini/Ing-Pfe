@@ -1,6 +1,5 @@
 import DashboardHeader from "@/components/common/DashboardHeader";
 import MobileMenu from "@/components/common/mobile-menu";
-import Pagination from "@/components/property/Pagination";
 import Footer from "@/components/property/dashboard/Footer";
 import FilterHeader from "@/components/property/dashboard/dashboard-my-properties/FilterHeader";
 import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
@@ -54,8 +53,6 @@ const MyOffers = () => {
                 <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <div className="packages_table table-responsive">
                     <MyoffresDataTable />
-
-                   
                   </div>
                 </div>
               </div>

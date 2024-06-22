@@ -11,5 +11,6 @@ export const store = configureStore({
     auth: authSlice,
     offers: offersSlice,
     formservice: formserviceSlice,
+    
   },
 });

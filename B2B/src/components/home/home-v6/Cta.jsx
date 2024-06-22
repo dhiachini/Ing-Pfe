@@ -19,7 +19,7 @@ const Cta = () => {
                 Téléchargez notre nouvelle application
               </h2>
               <p className="cta-text mb60">
-                Suivez des offres et des demandes avec l'application 216/213.
+                Suivez des offres et des demandes avec l'application ALGETUN.
                 Diffusez ou téléchargez pour suivre dans l'avion, le métro ou
                 partout où vous voulez le mieux.
               </p>

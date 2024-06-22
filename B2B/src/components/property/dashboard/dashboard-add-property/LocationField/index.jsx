@@ -29,16 +29,22 @@ const LocationField = ({ n, f, handleSubmit, updateForm }) => {
 
   useEffect(() => {
     if (hasSubmitted) {
+      const typePost = localStorage.getItem("typePost");
+      const isDemande = typePost === "0"; // Check if the type is "demande"
       if (loading) {
-        toast.loading("Chargement...", { id: "offer-loading" });
+        toast.loading(isDemande ? "Chargement de la demande..." : "Chargement de l'offre...", { id: "offer-loading" });
       } else {
-        toast.dismiss("chargement");
+        toast.dismiss("offer-loading");
         if (error) {
-          toast.error("L'ajout a échoué", { id: "offer-error" });
+          toast.error(isDemande ? "L'ajout de la demande a échoué" : "L'ajout de l'offre a échoué", { id: "offer-error" });
         } else {
-          toast.success("Offre ajoutée avec succès", { id: "offer-success" });
+          toast.success(isDemande ? "Demande ajoutée avec succès" : "Offre ajoutée avec succès", { id: "offer-success" });
           setTimeout(() => {
-            navigate("/mesoffres"); // Navigate to /myoffers after the success toast
+            if (isDemande) {
+              navigate("/mesdemandes"); // Navigate to /mesdemandes after the success toast
+            } else {
+              navigate("/mesoffres"); // Navigate to /mesoffres after the success toast
+            }
           }, 2100); // Adjust the delay as needed
         }
         setHasSubmitted(false);
@@ -86,7 +92,7 @@ const LocationField = ({ n, f, handleSubmit, updateForm }) => {
           </div>
 
           <div className="col-sm-6 col-xl-4">
-            <div style={{ display: "inline-block", marginTop: "70px", marginLeft: "160px" }}>
+            <div style={{ display: "inline-block", marginTop: "120px", marginLeft: "120px" }}>
               <button type="submit" className="btn ud-btn btn-thm">
                 Soumettre
                 <i className="fal fa-arrow-right-long" />

@@ -16,6 +16,9 @@ const truncateDescription = (description, maxLength) => {
 };
 
 const MyoffresDataTable = () => {
+  useEffect(() => {
+    localStorage.setItem("typeGetOne", 1);
+  }, []);
   const dispatch = useDispatch();
   const { offers, loading, error } = useSelector((state) => state.offers);
 
@@ -154,7 +157,7 @@ const MyoffresDataTable = () => {
                 <div className="listing-style1 dashboard-style d-xxl-flex align-items-center mb-0">
                   <div className="list-content py-0 p-0 mt-2 mt-xxl-0 ">
                     <div className="h6 list-title">
-                      <Link to={"/detailsoffre"}>{property.title}</Link>
+                    <Link to={`/detailsoffre/${property._id}`}>{property.title}</Link>
                     </div>
                     <p className="list-text mb-0">{property.location}</p>
                     <div className="list-price">

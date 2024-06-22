@@ -55,13 +55,7 @@ const MyDemandes = () => {
             <div className="row">
               <div className="col-xl-12">
                 <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                  <div className="packages_table table-responsive">
-                    <MyDemandesDataTables />
-
-                    <div className="mt30">
-                      <Pagination />
-                    </div>
-                  </div>
+                  <MyDemandesDataTables />
                 </div>
               </div>
             </div>

@@ -101,7 +101,7 @@ const PropertyDescription = ({ updateForm, s, n, f }) => {
             <input
               type="text"
               className="form-control"
-              placeholder="Titre de l'offre"
+              placeholder="Saisir le titre"
               name="title"
               value={form.title}
               onChange={handleChange}
@@ -118,7 +118,7 @@ const PropertyDescription = ({ updateForm, s, n, f }) => {
             <textarea
               cols={30}
               rows={5}
-              placeholder="Il existe de nombreuses variantes de passages."
+              placeholder="Il existe de nombreuses variantes de passages. Vous pouvez demander ou offrir des matières premières, du personnel, ou d'autres services selon vos besoins."
               name="description"
               value={form.description}
               onChange={handleChange}
