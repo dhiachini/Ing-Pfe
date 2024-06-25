@@ -17,7 +17,7 @@ const Widgets = () => {
                                 </div>
                                 <div className="flex-shrink-0">
                                     <h5 className={"fs-14 mb-0 text-" + item.badgeClass}>
-                                        {item.badge ? <i className={"fs-13 align-middle " + item.badge}></i> : null} {item.percentage} %
+                                        {item.badge ? <i className={"fs-13 align-middle " + item.badge}></i> : null}  
                                     </h5>
                                 </div>
                             </div>
@@ -30,11 +30,11 @@ const Widgets = () => {
                                             suffix={item.suffix}
                                             separator={item.separator}
                                             end={item.counter}
-                                            decimals={item.decimals}
+                                            
                                             duration={4}
                                         />
                                     </span></h4>
-                                    <Link to="#" className="text-decoration-underline">{item.link}</Link>
+                                    <Link to="/demandescompte" className="text-decoration-underline">{item.link}</Link>
                                 </div>
                                 <div className="avatar-sm flex-shrink-0">
                                     <span className={"avatar-title rounded fs-3 bg-soft-" + item.bgcolor}>

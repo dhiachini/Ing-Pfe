@@ -28,7 +28,7 @@ const Listeconseilsjuridique = () => {
       {/* dashboard_content_wrapper */}
 
       <div className="dashboard__main pl0-md">
-        <div className="dashboard__content bgc-f7">
+        <div className="dashboard__content bgc-f7" style={{ paddingLeft: "80px" }}>
           <div className="row pb40">
             <div className="col-lg-12">
               <DboardMobileNavigation />

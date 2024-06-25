@@ -25,7 +25,9 @@ const createFormservice = async (req, res) => {
 
     // Save formservice
     await formservice.save();
-    res.status(201).json({ message: "Formservice created successfully", formservice });
+    res
+      .status(201)
+      .json({ message: "Formservice created successfully", formservice });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Server error" });
@@ -36,9 +38,14 @@ const createFormservice = async (req, res) => {
 const deleteFormservice = async (req, res) => {
   try {
     const userID = extractUserID(req);
-    const formservice = await Formservice.findOneAndDelete({ _id: req.params.id, userID });
+    const formservice = await Formservice.findOneAndDelete({
+      _id: req.params.id,
+      userID,
+    });
     if (!formservice) {
-      return res.status(404).json({ message: "Formservice not found or unauthorized" });
+      return res
+        .status(404)
+        .json({ message: "Formservice not found or unauthorized" });
     }
     res.status(200).json({ message: "Formservice deleted successfully" });
   } catch (error) {
@@ -67,10 +74,17 @@ const updateFormservice = async (req, res) => {
     );
 
     if (!updatedFormservice) {
-      return res.status(404).json({ message: "Formservice not found or unauthorized" });
+      return res
+        .status(404)
+        .json({ message: "Formservice not found or unauthorized" });
     }
 
-    res.status(200).json({ message: "Formservice updated successfully", updatedFormservice });
+    res
+      .status(200)
+      .json({
+        message: "Formservice updated successfully",
+        updatedFormservice,
+      });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Server error" });
@@ -93,10 +107,26 @@ const findAllFormservices = async (req, res) => {
 const findSingleFormservice = async (req, res) => {
   try {
     const userID = extractUserID(req);
-    const formservice = await Formservice.findOne({ _id: req.params.id, userID });
+    const formservice = await Formservice.findOne({
+      _id: req.params.id,
+      userID,
+    });
     if (!formservice) {
-      return res.status(404).json({ message: "Formservice not found or unauthorized" });
+      return res
+        .status(404)
+        .json({ message: "Formservice not found or unauthorized" });
     }
+    res.status(200).json(formservice);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+// Find all Formserices for all users
+const findAllFormsericesForAllUsers = async (req, res) => {
+  try {
+    const formservice = await Formservice.find({});
     res.status(200).json(formservice);
   } catch (error) {
     console.error(error);
@@ -110,4 +140,5 @@ module.exports = {
   updateFormservice,
   findAllFormservices,
   findSingleFormservice,
+  findAllFormsericesForAllUsers,
 };

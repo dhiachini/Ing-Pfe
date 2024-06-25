@@ -241,14 +241,27 @@ import ToDoList from "../pages/ToDo";
 import DetailsDemandesCompte from "../gestion-client/DetailsDemandesCompte";
 import ListeDemandescompte from "../gestion-client/ListeDemandescompte";
 import ListeOffres from "../gestion-client/ListeOffres";
+import ListeDemandes from "../gestion-client/ListeDemandes";
+import ListeFicheservice from "../gestion-client/ListeFicheservice";
+import AjouterTexteJuridique from "../gestion-client/AjouterTexteJuridique";
+import AjouterConseilJuridique from "../gestion-client/AjouterConseilJuridique";
+import ListeTextes from "../gestion-client/ListeTextes";
+import ListeConseils from "../gestion-client/ListeConseils";
 
 const authProtectedRoutes = [
   { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   { path: "/dashboard-crm", component: <DashboardCrm /> },
 
+  { path: "/ajoutertextejuridique", component: <AjouterTexteJuridique /> },
+  { path: "/ajouterconseiljuridique", component: <AjouterConseilJuridique /> },
   { path: "/demandescompte", component: <ListeDemandescompte /> },
   { path: "/detailsdemandecompte/:id", component: <DetailsDemandesCompte /> },
   { path: "/listeoffres", component: <ListeOffres /> },
+  { path: "/listedemandes", component: <ListeDemandes /> },
+  { path: "/listeficheservice", component: <ListeFicheservice /> },
+  { path: "/listetextesjuridique", component: <ListeTextes /> },
+  { path: "/listeconseilsjuridique", component: <ListeConseils /> },
+
   
   { path: "/dashboard", component: <DashboardEcommerce /> },
   { path: "/index", component: <DashboardEcommerce /> },

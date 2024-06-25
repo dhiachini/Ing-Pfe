@@ -29,10 +29,7 @@ const DashboardEcommerce = () => {
                   </Col>
                   <SalesByLocations />
                 </Row>
-                <Row>
-                  <BestSellingProducts />
-                  <TopSellers />
-                </Row>
+              
                 <Row>
                   <StoreVisits />
                   <RecentOrders />

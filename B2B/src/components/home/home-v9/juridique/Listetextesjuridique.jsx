@@ -1,6 +1,6 @@
 import Header from "../Header";
 import MobileMenu from "@/components/common/mobile-menu";
-import Pagination from "@/components/property/Pagination";
+
 import Footer from "@/components/property/dashboard/Footer";
 import FilterHeader from "@/components/property/dashboard/dashboard-my-properties/FilterHeader";
 import PropertyDataTable from "@/components/property/dashboard/dashboard-my-properties/PropertyDataTable";
@@ -27,8 +27,8 @@ const Listetextesjuridique = () => {
 
       {/* dashboard_content_wrapper */}
 
-      <div className="dashboard__main pl0-md">
-        <div className="dashboard__content bgc-f7">
+      <div className="dashboard__main pl0-md" >
+        <div className="dashboard__content bgc-f7" style={{ paddingLeft: "80px" }}>
           <div className="row pb40">
             <div className="col-lg-12">
               <DboardMobileNavigation />
@@ -41,10 +41,6 @@ const Listetextesjuridique = () => {
             <div className="dashboard_title_area">
               <h2>Liste textes juridiques</h2>
             </div>
-
-            <div className="col-xxl-9">
-              <FilterHeader />
-            </div>
           </div>
           {/* End .row */}
 
@@ -53,10 +49,6 @@ const Listetextesjuridique = () => {
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <div className="packages_table table-responsive">
                   <TextesJuridiqueDataTable />
-
-                  <div className="mt30">
-                    <Pagination />
-                  </div>
                 </div>
               </div>
             </div>
@@ -64,11 +56,8 @@ const Listetextesjuridique = () => {
           {/* End .row */}
         </div>
         {/* End .dashboard__content */}
-
         <Footer />
       </div>
-
-      {/* dashboard_content_wrapper */}
     </>
   );
 };

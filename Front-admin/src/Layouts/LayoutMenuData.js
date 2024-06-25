@@ -144,6 +144,13 @@ const Navdata = () => {
             isHeader: true,
         },
         {
+            id: "analytics",
+            label: "Tableau de bord",
+            icon: "ri-pages-line",
+            link: "/dashboard",
+            parentId: "dashboard",
+        },
+        {
             id: "dashboard",
             label: "Volet juridique",
             icon: "ri-pages-line",
@@ -159,47 +166,59 @@ const Navdata = () => {
                 {
                     id: "analytics",
                     label: "Ajouter texte juridique",
-                    link: "/addproject",
+                    link: "/ajoutertextejuridique",
+                    parentId: "dashboard",
+                },
+                {
+                    id: "analytics",
+                    label: "Liste textes juridique",
+                    link: "/listetextesjuridique",
                     parentId: "dashboard",
                 },
                 {
                     id: "crm",
                     label: "Ajouter conseil juridique",
-                    link: "/dashboard-crm",
+                    link: "/ajouterconseiljuridique",
                     parentId: "dashboard",
                 },
                 {
-                    id: "ecommerce",
-                    label: "Ecommerce",
-                    link: "/dashboard",
+                    id: "crm",
+                    label: "Liste conseils juridique",
+                    link: "/listeconseilsjuridique",
                     parentId: "dashboard",
                 },
-                {
-                    id: "crypto",
-                    label: "Crypto",
-                    link: "/dashboard-crypto",
-                    parentId: "dashboard",
-                },
-                {
-                    id: "projects",
-                    label: "Projects",
-                    link: "/dashboard-projects",
-                    parentId: "dashboard",
-                },
-                {
-                    id: "nft",
-                    label: "NFT",
-                    link: "/dashboard-nft",
-                    parentId: "dashboard",
-                },
-                {
-                    id: "job",
-                    label: "Job",
-                    link: "/dashboard-job",
-                    parentId: "dashboard",
-                    badgeColor: "success",
-                    badgeName: "New",
-                },
+                // {
+                //     id: "ecommerce",
+                //     label: "Ecommerce",
+                //     link: "/dashboard",
+                //     parentId: "dashboard",
+                // },
+                // {
+                //     id: "crypto",
+                //     label: "Crypto",
+                //     link: "/dashboard-crypto",
+                //     parentId: "dashboard",
+                // },
+                // {
+                //     id: "projects",
+                //     label: "Projects",
+                //     link: "/dashboard-projects",
+                //     parentId: "dashboard",
+                // },
+                // {
+                //     id: "nft",
+                //     label: "NFT",
+                //     link: "/dashboard-nft",
+                //     parentId: "dashboard",
+                // },
+                // {
+                //     id: "job",
+                //     label: "Job",
+                //     link: "/dashboard-job",
+                //     parentId: "dashboard",
+                //     badgeColor: "success",
+                //     badgeName: "New",
+                // },
             ],
         },
         {
@@ -727,33 +746,33 @@ const Navdata = () => {
                     link: "/listeoffres",
                     parentId: "pages",
                 },
-                {
-                    id: "profile",
-                    label: "Profile",
-                    link: "/#",
-                    isChildItem: true,
-                    click: function (e) {
-                        e.preventDefault();
-                        setIsProfile(!isProfile);
-                    },
-                    parentId: "pages",
-                    stateVariables: isProfile,
-                    childItems: [
-                        { id: 1, label: "Simple Page", link: "/pages-profile", parentId: "pages" },
-                        { id: 2, label: "Settings", link: "/pages-profile-settings", parentId: "pages" },
-                    ]
-                },
-                { id: "team", label: "Team", link: "/pages-team", parentId: "pages" },
-                { id: "timeline", label: "Timeline", link: "/pages-timeline", parentId: "pages" },
-                { id: "faqs", label: "FAQs", link: "/pages-faqs", parentId: "pages" },
-                { id: "pricing", label: "Pricing", link: "/pages-pricing", parentId: "pages" },
-                { id: "gallery", label: "Gallery", link: "/pages-gallery", parentId: "pages" },
-                { id: "maintenance", label: "Maintenance", link: "/pages-maintenance", parentId: "pages" },
-                { id: "comingSoon", label: "Coming Soon", link: "/pages-coming-soon", parentId: "pages" },
-                { id: "sitemap", label: "Sitemap", link: "/pages-sitemap", parentId: "pages" },
-                { id: "searchResults", label: "Search Results", link: "/pages-search-results", parentId: "pages" },
-                { id: "PrivecyPolicy", label: "Privacy Policy", link: "/pages-privacy-policy", parentId: "pages", badgeColor: "success", badgeName: "New", },
-                { id: "TermsCondition", label: "Terms Condition", link: "/pages-terms-condition", parentId: "pages", badgeColor: "success", badgeName: "New", },
+                // {
+                //     id: "profile",
+                //     label: "Profile",
+                //     link: "/#",
+                //     isChildItem: true,
+                //     click: function (e) {
+                //         e.preventDefault();
+                //         setIsProfile(!isProfile);
+                //     },
+                //     parentId: "pages",
+                //     stateVariables: isProfile,
+                //     childItems: [
+                //         { id: 1, label: "Simple Page", link: "/pages-profile", parentId: "pages" },
+                //         { id: 2, label: "Settings", link: "/pages-profile-settings", parentId: "pages" },
+                //     ]
+                // },
+                { id: "team", label: "Liste des demandes", link: "/listedemandes", parentId: "pages" },
+                // { id: "timeline", label: "Timeline", link: "/pages-timeline", parentId: "pages" },
+                // { id: "faqs", label: "FAQs", link: "/pages-faqs", parentId: "pages" },
+                // { id: "pricing", label: "Pricing", link: "/pages-pricing", parentId: "pages" },
+                // { id: "gallery", label: "Gallery", link: "/pages-gallery", parentId: "pages" },
+                // { id: "maintenance", label: "Maintenance", link: "/pages-maintenance", parentId: "pages" },
+                // { id: "comingSoon", label: "Coming Soon", link: "/pages-coming-soon", parentId: "pages" },
+                // { id: "sitemap", label: "Sitemap", link: "/pages-sitemap", parentId: "pages" },
+                // { id: "searchResults", label: "Search Results", link: "/pages-search-results", parentId: "pages" },
+                // { id: "PrivecyPolicy", label: "Privacy Policy", link: "/pages-privacy-policy", parentId: "pages", badgeColor: "success", badgeName: "New", },
+                // { id: "TermsCondition", label: "Terms Condition", link: "/pages-terms-condition", parentId: "pages", badgeColor: "success", badgeName: "New", },
             ],
         },
         {
@@ -769,9 +788,9 @@ const Navdata = () => {
                 updateIconSidebar(e);
             },
             subItems: [
-                { id: "onePage", label: "One Page", link: "/landing", parentId: "landing" },
-                { id: "nftLanding", label: "NFT Landing", link: "/nft-landing", parentId: "landing" },
-                { id: "jobLanding", label: "Job", link: "/job-landing", parentId: "landing", badgeColor: "success", badgeName: "New" },
+                // { id: "onePage", label: "One Page", link: "/landing", parentId: "landing" },
+                // { id: "nftLanding", label: "NFT Landing", link: "/nft-landing", parentId: "landing" },
+                { id: "jobLanding", label: "Liste des fiches service", link: "/listeficheservice", parentId: "landing", badgeColor: "success", badgeName: "Nouveau" },
             ],
         },
     //     {

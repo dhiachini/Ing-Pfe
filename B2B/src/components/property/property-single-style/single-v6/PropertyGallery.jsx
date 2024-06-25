@@ -1,28 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import "swiper/swiper-bundle.min.css";
-import { fetchSingleOffer } from "../../../../../Redux/Actions/offersActions";
 
 const PropertyGallery = ({ id }) => {
-  const dispatch = useDispatch();
   const [thumbsSwiper, setThumbsSwiper] = useState(null); // Declare thumbsSwiper state
-  const offer = useSelector((state) => state.offers.singleOffer.images);
-  const [images, setImages] = useState([]);
+  const off = useSelector((state) => state.offers.offers);
+  const singleOffer = off.filter((so) => so._id === id);
 
   useEffect(() => {
-    if (offer) {
-      console.log("Offer:", offer);
-      setImages(offer);
-      console.log(images);
-    }
-  }, [offer]);
+    console.log("Offer:", singleOffer);
+  }, [off, singleOffer]);
 
-  if (!offer) {
-    return <div>Loading...</div>;
-  }
-  console.log(offer);
   return (
     <div className="row">
       <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
@@ -39,32 +29,36 @@ const PropertyGallery = ({ id }) => {
                 <div className="row" data-aos="fade-up" data-aos-delay="300">
                   <div className="col-lg-12">
                     <div className="ps-v6-slider nav_none slider-1-grid owl-theme owl-carousel">
-                      <Swiper
-                        loop={true}
-                        spaceBetween={10}
-                        navigation={{
-                          prevEl: ".prev-btn",
-                          nextEl: ".next-btn",
-                        }}
-                        thumbs={{
-                          swiper: thumbsSwiper,
-                        }}
-                        modules={[FreeMode, Navigation, Thumbs]}
-                        className="mySwiper2"
-                      >
-                        {images.map((item, i) => (
-                          <SwiperSlide key={i}>
-                            <img
-                              src={item[i]}
-                              alt={`gallery-${i}`}
-                              className="w-100 h-auto bdrs12"
-                            />
-                          </SwiperSlide>
-                        ))}
-                      </Swiper>
+                      {singleOffer.map((gallery, index) => (
+                        <div key={index}>
+                          <Swiper
+                            loop={true}
+                            spaceBetween={10}
+                            navigation={{
+                              prevEl: ".prev-btn",
+                              nextEl: ".next-btn",
+                            }}
+                            thumbs={{
+                              swiper: thumbsSwiper,
+                            }}
+                            modules={[FreeMode, Navigation, Thumbs]}
+                            className="mySwiper2"
+                          >
+                            {gallery.images.map((item, i) => (
+                              <SwiperSlide key={i}>
+                                <img
+                                  src={item}
+                                  alt={`gallery-${i}`}
+                                  className="w-100 h-auto bdrs12"
+                                />
+                              </SwiperSlide>
+                            ))}
+                          </Swiper>
+                        
 
-                      <div className="row">
-                        <div className="col-lg-7 col-md-8">
+
+                      {/* <div className="row mt-4">
+                        <div className="col-lg-12">
                           <Swiper
                             onSwiper={setThumbsSwiper}
                             loop={true}
@@ -75,18 +69,21 @@ const PropertyGallery = ({ id }) => {
                             modules={[FreeMode, Navigation, Thumbs]}
                             className="mySwiper mt20"
                           >
-                            {images.map((item, i) => (
+                            {gallery.images.map((item, i) => (
                               <SwiperSlide key={i}>
                                 <img
-                                  src={item[i]}
-                                  alt={`image-${i}`}
+                                  src={item}
+                                  alt={`thumb-${i}`}
                                   className="w-100 bdrs12 cover pointer"
                                 />
                               </SwiperSlide>
-                            ))}
+                            ))} 
                           </Swiper>
+                          
                         </div>
+                      </div> */}
                       </div>
+                        ))}
                     </div>
                   </div>
                 </div>
