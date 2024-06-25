@@ -1,58 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-const PropertyAddress = () => {
-  const addresses = [
-    {
-      address: "10425 Tabor St",
-      city: "Los Angeles",
-      state: "California",
-      zipCode: "90034",
-      area: "Brookside",
-      country: "United States",
-    },
-    {
-      address: "10 Downing Street",
-      city: "London",
-      state: "Greater London",
-      zipCode: "SW1A 2AA",
-      area: "Westminster",
-      country: "United Kingdom",
-    },
-  ];
+const PropertyAddress = ({ id }) => {
+  const offers = useSelector((state) => state.offers.offers);
+  const [address, setAddress] = useState({});
+  const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
+
+  useEffect(() => {
+    const offer = offers.find((offer) => offer._id === id);
+    if (offer) {
+      setAddress({
+        country: offer.country,
+      });
+      setCoordinates({
+        lat: offer.latitude,
+        lng: offer.longitude,
+      });
+    }
+  }, [offers, id]);
+
+  if (!address.country) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
-      {addresses.map((address, index) => (
-        <div
-          key={index}
-          className={`col-md-6 col-xl-4 ${index === 1 ? "offset-xl-2" : ""}`}
-        >
-          <div className="d-flex justify-content-between">
-            <div className="pd-list">
-              <p className="fw600 mb10 ff-heading dark-color">Address</p>
-              <p className="fw600 mb10 ff-heading dark-color">City</p>
-              <p className="fw600 mb-0 ff-heading dark-color">State/county</p>
-            </div>
-            <div className="pd-list">
-              <p className="text mb10">{address.address}</p>
-              <p className="text mb10">{address.city}</p>
-              <p className="text mb-0">{address.state}</p>
-            </div>
+      
+
+      <div className="col-md-6 col-xl-4">
+        <div className="d-flex justify-content-between">
+          <div className="pd-list">
+            <p className="fw600 mb-0 ff-heading dark-color">Etat / Pays</p>
+          </div>
+          <div className="pd-list">
+            <p className="text mb-0">{address.country}</p>
           </div>
         </div>
-      ))}
-      {/* End col */}
+      </div>
 
       <div className="col-md-12">
         <iframe
           className="position-relative bdrs12 mt30 h250"
           loading="lazy"
-          src={`https://maps.google.com/maps?q=${addresses[0].address}&t=m&z=14&output=embed&iwloc=near`}
-          title={addresses[0].address}
-          aria-label={addresses[0].address}
+          src={`https://maps.google.com/maps?q=${coordinates.lat},${coordinates.lng}&t=m&z=14&output=embed&iwloc=near`}
+          title={address.address}
+          aria-label={address.address}
         />
       </div>
-      {/* End col */}
     </>
   );
 };

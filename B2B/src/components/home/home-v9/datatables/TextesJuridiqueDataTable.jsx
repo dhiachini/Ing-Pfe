@@ -46,6 +46,7 @@ const TextesJuridiqueDataTable = ({ currentPage, totalPages, handlePageClick }) 
         <thead className="t-head">
           <tr>
             <th scope="col">Titre</th>
+            <th scope="col">Pays</th>
             <th scope="col">Date de publication</th>
             <th scope="col">Description</th>
             <th scope="col">Télécharger PDF</th>
@@ -66,6 +67,7 @@ const TextesJuridiqueDataTable = ({ currentPage, totalPages, handlePageClick }) 
                   </div>
                 </div>
               </td>
+              <td>{texte.pays}</td>
               <td>{formatDate(texte.createdAt)}</td>
               <td>{texte.description}</td>
               <td className="text-center">

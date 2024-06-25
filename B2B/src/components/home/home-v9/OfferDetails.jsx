@@ -43,13 +43,13 @@ const OfferDetails = () => {
               <PropertyGallery id={id} />
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <h4 className="title fz17 mb30">Description de l'offre</h4>
-                <ProperytyDescriptions />
+                <ProperytyDescriptions id={id} />
               </div>
 
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <h4 className="title fz17 mb30 mt30">Address</h4>
+                <h4 className="title fz17 mb30 mt30">Adresse</h4>
                 <div className="row">
-                  <PropertyAddress />
+                  <PropertyAddress id={id}/>
                 </div>
               </div>
 
@@ -68,7 +68,7 @@ const OfferDetails = () => {
                     <h6 className="title fz17 mb30">
                       Contacter le propriétaire
                     </h6>
-                    <ContactWithAgent />
+                    <ContactWithAgent id={id}/>
                   </div>
                 </div>
               </div>

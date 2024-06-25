@@ -12,5 +12,6 @@ router.put('/offers/:id', authenticateToken, uploadMultiple.array('images'), off
 router.get('/offers', authenticateToken, offerController.FindAllOffers); // Require auth
 router.get('/offers/all', offerController.findAllOffersForAllUsers); // No auth required
 router.get('/offers/:id', authenticateToken, offerController.FindSingleOffer);
+router.get('/offers/:id/user-details', offerController.getUserDetailsFromOffer);
 
 module.exports = router;

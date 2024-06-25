@@ -54,36 +54,8 @@ const PropertyGallery = ({ id }) => {
                               </SwiperSlide>
                             ))}
                           </Swiper>
-                        
-
-
-                      {/* <div className="row mt-4">
-                        <div className="col-lg-12">
-                          <Swiper
-                            onSwiper={setThumbsSwiper}
-                            loop={true}
-                            spaceBetween={10}
-                            slidesPerView={4}
-                            freeMode={true}
-                            watchSlidesProgress={true}
-                            modules={[FreeMode, Navigation, Thumbs]}
-                            className="mySwiper mt20"
-                          >
-                            {gallery.images.map((item, i) => (
-                              <SwiperSlide key={i}>
-                                <img
-                                  src={item}
-                                  alt={`thumb-${i}`}
-                                  className="w-100 bdrs12 cover pointer"
-                                />
-                              </SwiperSlide>
-                            ))} 
-                          </Swiper>
-                          
                         </div>
-                      </div> */}
-                      </div>
-                        ))}
+                      ))}
                     </div>
                   </div>
                 </div>

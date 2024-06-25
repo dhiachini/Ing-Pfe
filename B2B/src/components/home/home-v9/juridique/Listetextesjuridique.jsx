@@ -1,7 +1,7 @@
 import Header from "../Header";
 import MobileMenu from "@/components/common/mobile-menu";
 
-import Footer from "@/components/property/dashboard/Footer";
+import Footer from "@/components/common/default-footer";
 import FilterHeader from "@/components/property/dashboard/dashboard-my-properties/FilterHeader";
 import PropertyDataTable from "@/components/property/dashboard/dashboard-my-properties/PropertyDataTable";
 import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
@@ -56,7 +56,9 @@ const Listetextesjuridique = () => {
           {/* End .row */}
         </div>
         {/* End .dashboard__content */}
+        <section className="footer-style1 pt60 pb-0">
         <Footer />
+      </section>
       </div>
     </>
   );

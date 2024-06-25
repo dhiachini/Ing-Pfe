@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-const ProperytyDescriptions = () => {
+const ProperytyDescriptions = ({ id }) => {
+  const offers = useSelector((state) => state.offers.offers);
+  const [description, setDescription] = useState("");
+
+  useEffect(() => {
+    const offer = offers.find((offer) => offer._id === id);
+    if (offer) {
+      setDescription(offer.description);
+    }
+  }, [offers, id]);
+
   return (
     <>
-      <p className="text mb10">
-        Doté du moteur diesel 2.2 TDCi de 154 chevaux, il affiche une
-        consommation moyenne en cycle mixte de 9,7 l/100 km, témoignant de
-        l’efficience de ce moteur qui a déjà fait ses preuves sur plusieurs
-        autres modèles de la gamme Ford. Le Ford Transit Minibus pourra toujours
-        compter sur les 385 Nm de couple afin de transporter les 15 passagers.
-      </p>
+      <p className="text mb10">{description}</p>
       <div className="agent-single-accordion">
         <div className="accordion accordion-flush" id="accordionFlushExample">
           <div className="accordion-item">
@@ -22,15 +27,7 @@ const ProperytyDescriptions = () => {
             >
               <div className="accordion-body p-0">
                 <p className="text">
-                  Dans le domaine du transport de personnes, la sécurité prime
-                  et sur ce domaine, Ford n’a pas lésiné les moyens. En effet,
-                  le Ford Transit Minibus 15 places établit également de
-                  nouvelles références grâce à ses équipements de sécurité et à
-                  ses aides à la conduite car il est équipé de l’ABS
-                  (anti-blocage des roues), de l’ESP (système de contrôle de
-                  trajectoire), de l’EBA (aide au freinage d’urgence), du TCS
-                  (système du contrôle de traction) et du HLA (aide au démarrage
-                  en côte).
+                  {/* Additional details can be shown here if needed */}
                 </p>
               </div>
             </div>

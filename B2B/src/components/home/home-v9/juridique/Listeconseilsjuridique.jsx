@@ -1,7 +1,7 @@
 import Header from "../Header";
 import MobileMenu from "@/components/common/mobile-menu";
 import Pagination from "@/components/property/Pagination";
-import Footer from "@/components/property/dashboard/Footer";
+import Footer from "@/components/common/default-footer";
 import FilterHeader from "@/components/property/dashboard/dashboard-my-properties/FilterHeader";
 import PropertyDataTable from "@/components/property/dashboard/dashboard-my-properties/PropertyDataTable";
 import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
@@ -10,7 +10,8 @@ import ConseilsjuridiqueDataTable from "../datatables/ConseilsjuridiqueDataTable
 import MetaData from "@/components/common/MetaData";
 
 const metaInformation = {
-  title: "Liste conseils juridiques || Plateforme d'échange Algéro - Tunisienne",
+  title:
+    "Liste conseils juridiques || Plateforme d'échange Algéro - Tunisienne",
 };
 
 const Listeconseilsjuridique = () => {
@@ -28,7 +29,10 @@ const Listeconseilsjuridique = () => {
       {/* dashboard_content_wrapper */}
 
       <div className="dashboard__main pl0-md">
-        <div className="dashboard__content bgc-f7" style={{ paddingLeft: "80px" }}>
+        <div
+          className="dashboard__content bgc-f7"
+          style={{ paddingLeft: "80px" }}
+        >
           <div className="row pb40">
             <div className="col-lg-12">
               <DboardMobileNavigation />
@@ -53,10 +57,6 @@ const Listeconseilsjuridique = () => {
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <div className="packages_table table-responsive">
                   <ConseilsjuridiqueDataTable />
-
-                  <div className="mt30">
-                    <Pagination />
-                  </div>
                 </div>
               </div>
             </div>
@@ -65,7 +65,9 @@ const Listeconseilsjuridique = () => {
         </div>
         {/* End .dashboard__content */}
 
+        <section className="footer-style1 pt60 pb-0">
         <Footer />
+      </section>
       </div>
 
       {/* dashboard_content_wrapper */}

@@ -1,6 +1,7 @@
 const Offer = require("../models/offers.models");
 const jwt = require("jsonwebtoken");
 const cloudinary = require("cloudinary");
+const AccountRequest = require("../models/accountrequest.model");
 
 // Function to extract userID from JWT token
 const extractUserID = (req) => {
@@ -176,6 +177,40 @@ const findAllOffersForAllUsers = async (req, res) => {
   }
 };
 
+// Get user details from offer ID
+const getUserDetailsFromOffer = async (req, res) => {
+  try {
+    const offerID = req.params.id;
+    
+    // Fetch the offer by ID
+    const offer = await Offer.findById(offerID);
+    if (!offer) {
+      return res.status(404).json({ message: "Offer not found" });
+    }
+
+    const userID = offer.userID;
+    
+    // Fetch the account request details for the userID with status "accepted"
+    const user = await AccountRequest.findOne({ _id: userID});
+    if (!user) {
+      return res.status(404).json({ message: "User not found or not accepted" });
+    }
+
+    const userDetails = {
+      Fullname: user.Fullname,
+      Professionalemail: user.Professionalemail,
+      Telephonecode: user.Telephonecode,
+      Phonenumber: user.Phonenumber,
+      Companyname: user.Companyname
+    };
+
+    res.status(200).json(userDetails);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
 module.exports = {
   createOffer,
   deleteOffer,
@@ -183,4 +218,5 @@ module.exports = {
   FindAllOffers,
   FindSingleOffer,
   findAllOffersForAllUsers,
+  getUserDetailsFromOffer,
 };
