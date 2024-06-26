@@ -12,6 +12,7 @@ router.put('/demandes/:id', authenticateToken, uploadMultiple.array('images'), d
 router.get('/demandes', authenticateToken, demandeController.FindAllDemandes);
 router.get('/demandes/all', demandeController.findAllDemandesForAllUsers);
 router.get('/demandes/:id', authenticateToken, demandeController.FindSingleDemande);
+router.get('/demandes/:id/user-details', demandeController.getUserDetailsFromDemande);
 
 
 module.exports = router;

@@ -1,8 +1,9 @@
 const Demande = require("../models/demandes.models");
 const jwt = require("jsonwebtoken");
 const cloudinary = require("cloudinary");
+const AccountRequest = require("../models/accountrequest.model");
 
-// Function to extract userID from JWT token
+
 // Function to extract userID from JWT token
 const extractUserID = (req) => {
   const token = req.header("x-auth-token");
@@ -175,6 +176,40 @@ const findAllDemandesForAllUsers = async (req, res) => {
   }
 };
 
+// Get user details from demande ID
+const getUserDetailsFromDemande = async (req, res) => {
+  try {
+    const demandeID = req.params.id;
+    
+    // Fetch the offer by ID
+    const demande = await Demande.findById(demandeID);
+    if (!demande) {
+      return res.status(404).json({ message: "demande not found" });
+    }
+
+    const userID = demande.userID;
+    
+    // Fetch the account request details for the userID with status "accepted"
+    const user = await AccountRequest.findOne({ _id: userID});
+    if (!user) {
+      return res.status(404).json({ message: "User not found or not accepted" });
+    }
+
+    const userDetails = {
+      Fullname: user.Fullname,
+      Professionalemail: user.Professionalemail,
+      Telephonecode: user.Telephonecode,
+      Phonenumber: user.Phonenumber,
+      Companyname: user.Companyname
+    };
+
+    res.status(200).json(userDetails);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
 module.exports = {
   createDemande,
   deleteDemande,
@@ -182,4 +217,5 @@ module.exports = {
   FindAllDemandes,
   FindSingleDemande,
   findAllDemandesForAllUsers,
+  getUserDetailsFromDemande,
 };

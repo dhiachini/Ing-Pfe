@@ -93,8 +93,10 @@ const ConseilsJuridiqueDataTable = ({ currentPage, totalPages, handlePageClick }
       </table>
 
       <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
+        currentPage={1}
+        totalPages={
+          textesJuridiques.length / 10 > 10 ? textesJuridiques.length / 10 : 1
+        }
         handlePageClick={handlePageClick}
       />
     </>

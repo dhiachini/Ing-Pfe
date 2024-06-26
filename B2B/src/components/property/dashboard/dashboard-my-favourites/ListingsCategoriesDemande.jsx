@@ -24,11 +24,11 @@ const ListingsCategoriesDemande = () => {
           <div className="col-md-6 col-lg-4 col-xl-3" key={listing.id}>
             <div className="listing-style1 style2">
               <div className="list-thumb">
-                <img
+                {/* <img
                   className="w-100 h-100 cover"
                   src={listing.image}
                   alt="listings"
-                />
+                /> */}
                 <div className="list-price">
                   {listing.price} <span>Demandes</span>
                 </div>
@@ -36,7 +36,7 @@ const ListingsCategoriesDemande = () => {
               
               <div className="list-content">
                 <h6 className="list-title">
-                  <Link to={'/demandes '}>{listing.title}</Link>
+                  <Link to={'/demandes'}>{listing.title}</Link>
                 </h6>
                 <p className="list-text">{listing.descrip}</p>
               </div>

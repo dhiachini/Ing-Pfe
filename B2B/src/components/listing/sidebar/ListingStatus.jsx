@@ -6,7 +6,8 @@ const ListingStatus = ({filterFunctions}) => {
   const options = [
     { id: "flexRadioDefault3", label: "À vendre" , defaultChecked: true },
     { id: "flexRadioDefault1", label: "À Louer" },
-    { id: "flexRadioDefault2", label: "Les deux", },
+    { id: "flexRadioDefault4", label: "Invesstissement"},
+    { id: "flexRadioDefault2", label: "Les deux"},
 
   ];
 

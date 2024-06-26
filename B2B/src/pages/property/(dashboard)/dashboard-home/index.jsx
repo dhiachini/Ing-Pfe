@@ -3,10 +3,8 @@ import MobileMenu from "@/components/common/mobile-menu";
 import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
 import Footer from "@/components/property/dashboard/Footer";
 import SidebarDashboard from "@/components/property/dashboard/SidebarDashboard";
-import RecentActivities from "@/components/property/dashboard/dashboard-home/RecentActivities";
 import TopStateBlock from "@/components/property/dashboard/dashboard-home/TopStateBlock";
 import PropertyViews from "@/components/property/dashboard/dashboard-home/property-view";
-
 import MetaData from "@/components/common/MetaData";
 
 const metaInformation = {
@@ -41,7 +39,7 @@ const DashboardHome = () => {
 
                 <div className="col-lg-12">
                   <div className="dashboard_title_area">
-                    <h2>Bienvenue, Dhia!</h2>
+                    <h2>Bienvenue !</h2>
                     <p className="text">Nous sommes heureux de vous revoir!</p>
                   </div>
                 </div>

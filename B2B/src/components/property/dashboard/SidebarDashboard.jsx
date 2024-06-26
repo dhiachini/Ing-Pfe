@@ -1,10 +1,17 @@
-
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import React from "react";
-import {useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../../../Redux/Actions/authActions";
 
 const SidebarDashboard = () => {
-  const { pathname } = useLocation()
+  const { pathname } = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logoutAction());
+    navigate('/home-v9');
+  };
 
   const sidebarItems = [
     {
@@ -46,39 +53,24 @@ const SidebarDashboard = () => {
           text: "Mes Demandes",
         },
         {
-          href: "/dashboard-my-favourites",
-          icon: "flaticon-like",
-          text: "Mes Annonces Favoris",
+          href: "/dashboard-my-package",
+          icon: "flaticon-protection",
+          text: "mes fiches service",
         },
-        {
-          href: "/dashboard-saved-search",
-          icon: "flaticon-search-2",
-          text: "Recherches Enregistrée",
-        },
-        // {
-        //   href: "/dashboard-reviews",
-        //   icon: "flaticon-review",
-        //   text: "Reviews",
-        // },
       ],
     },
     {
       title: "GÉRER SON COMPTE",
       items: [
         {
-          href: "/dashboard-my-package",
-          icon: "flaticon-protection",
-          text: "mes fiches service",
-        },
-        {
           href: "/dashboard-my-profile",
           icon: "flaticon-user",
           text: "Mon Profile",
         },
         {
-          href: "/home-v9",
           icon: "flaticon-logout",
           text: "Déconnexion",
+          action: handleLogout,
         },
       ],
     },
@@ -98,15 +90,28 @@ const SidebarDashboard = () => {
             </p>
             {section.items.map((item, itemIndex) => (
               <div key={itemIndex} className="sidebar_list_item">
-                <Link
-                  to={item.href}
-                  className={`items-center   ${
-                    pathname == item.href ? "-is-active" : ""
-                  } `}
-                >
-                  <i className={`${item.icon} mr15`} />
-                  {item.text}
-                </Link>
+                {item.href ? (
+                  <Link
+                    to={item.href}
+                    className={`items-center ${
+                      pathname === item.href ? "-is-active" : ""
+                    } `}
+                  >
+                    <i className={`${item.icon} mr15`} />
+                    {item.text}
+                  </Link>
+                ) : (
+                  <button
+                    onClick={item.action}
+                    className={`items-center ${
+                      pathname === item.href ? "-is-active" : ""
+                    } `}
+                    style={{ background: "none", border: "none", padding: 0, color: "inherit", cursor: "pointer" }}
+                  >
+                    <i className={`${item.icon} mr15`} />
+                    {item.text}
+                  </button>
+                )}
               </div>
             ))}
           </div>

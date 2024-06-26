@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import { loginSuccess, loginFailure, logout } from "../Slices/authSlice";
 
 export const loginAction = (credentials) => async (dispatch) => {

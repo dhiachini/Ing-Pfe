@@ -67,8 +67,8 @@ const updateAccountRequestStatus = async (req, res) => {
     // Save the updated account request
     await accountRequest.save();
     // Send email notification
-    sendEmail(accountRequest.Professionalemail, 'Account Request Accepted', 'Your account request has been accepted.');
-    res.status(200).json({ message: "Account request status updated successfully" });
+    sendEmail(accountRequest.Professionalemail, 'ALGETUN plate-forme Demande de compte acceptée', 'Votre demande de compte a été acceptée. Vous pouvez maintenant accéder à toutes les fonctionnalités de notre plate-forme ALGETUN.');
+    res.status(200).json({ message: "Statut de la demande de compte mis à jour avec succès" });
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ message: "Server error" });
@@ -88,8 +88,8 @@ const updateAccountRequestStatusToRefused = async (req, res) => {
     // Save the updated account request
     await accountRequest.save();
     // Send email notification
-    sendEmail(accountRequest.Professionalemail, 'Account Request Refused', 'Your account request has been refused.');
-    res.status(200).json({ message: "Account request status updated to Refusée successfully" });
+    sendEmail(accountRequest.Professionalemail, 'ALGETUN plate-forme Demande de compte refusée', 'Votre demande de compte a été refusée.');
+    res.status(200).json({ message: "Statut de la demande de compte mis à jour avec succès en Refusée" });
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ message: "Server error" });

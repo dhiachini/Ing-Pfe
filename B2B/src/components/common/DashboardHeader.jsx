@@ -12,7 +12,7 @@ const DashboardHeader = () => {
 
   const handleLogout = () => {
     dispatch(logoutAction());
-    navigate('/home-v9');
+    navigate("/home-v9");
   };
 
   const menuItems = [
@@ -55,33 +55,23 @@ const DashboardHeader = () => {
           href: "/mesdemandes",
         },
         {
-          icon: "flaticon-like",
-          text: "Mes Annonces Favoris",
-          href: "/dashboard-my-favourites",
+          icon: "flaticon-protection",
+          text: "Mes fiches service",
+          href: "/dashboard-my-package",
         },
-        {
-          icon: "flaticon-search-2",
-          text: "Recherche enregistrée",
-          href: "/dashboard-saved-search",
-        },
-        { icon: "flaticon-review", text: "Reviews", href: "/dashboard-review" },
       ],
     },
     {
       title: "GÉRER SON COMPTE",
       items: [
-        {
-          icon: "flaticon-protection",
-          text: "Mon Colis",
-          href: "/dashboard-my-package",
-        },
+        
         {
           icon: "flaticon-user",
           text: "Mon Profile",
           href: "/dashboard-my-profile",
         },
         {
-          icon: "flaticon-exit",
+          icon: "flaticon-logout",
           text: "Déconnexion",
           action: handleLogout,
         },
@@ -164,11 +154,11 @@ const DashboardHeader = () => {
                                         className="dropdown-item"
                                         onClick={item.action}
                                         style={{
-                                          background: 'none',
-                                          border: 'none',
-                                          padding: '0',
-                                          textAlign: 'left',
-                                          width: '100%',
+                                          background: "none",
+                                          border: "none",
+                                          padding: "0",
+                                          textAlign: "left",
+                                          width: "100%",
                                         }}
                                       >
                                         <i className={`${item.icon} mr10`} />
@@ -180,7 +170,9 @@ const DashboardHeader = () => {
                                       <Link
                                         key={itemIndex}
                                         className={`dropdown-item ${
-                                          pathname === item.href ? "-is-active" : ""
+                                          pathname === item.href
+                                            ? "-is-active"
+                                            : ""
                                         }`}
                                         to={item.href}
                                       >

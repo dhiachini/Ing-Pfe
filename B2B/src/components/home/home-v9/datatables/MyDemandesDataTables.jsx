@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchOffers, deleteDemande } from "../../../../../Redux/Actions/offersActions";
+import {
+  fetchOffers,
+  deleteDemande,
+} from "../../../../../Redux/Actions/offersActions";
 import { Link } from "react-router-dom";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import Pagination from "@/components/property/Pagination";
@@ -16,7 +19,7 @@ const MyDemandesDataTable = () => {
   useEffect(() => {
     localStorage.setItem("typeGetOne", 0);
   }, []);
-  
+
   const dispatch = useDispatch();
   const { offers, loading, error } = useSelector((state) => state.offers);
 
@@ -157,12 +160,11 @@ const MyDemandesDataTable = () => {
                 <div className="listing-style1 dashboard-style d-xxl-flex align-items-center mb-0">
                   <div className="list-content py-0 p-0 mt-2 mt-xxl-0 ">
                     <div className="h6 list-title">
-                      <Link to={"/detailsoffre"}>{property.title}</Link>
+                      <Link to={`/detailsoffre/${property._id}`}>
+                        {property.title}
+                      </Link>
                     </div>
                     <p className="list-text mb-0">{property.location}</p>
-                    <div className="list-price">
-                      <a href="#">{property.price}</a>
-                    </div>
                   </div>
                 </div>
               </th>

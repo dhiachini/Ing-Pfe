@@ -1,29 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchOffers } from '../../../../../Redux/Actions/offersActions';
+import { fetchAllFormservices } from '../../../../../Redux/Actions/formserviceActions';
 
-const statisticsData = [
-  {
-    text: "Mes Annonces",
-    title: "583",
-    icon: "flaticon-home",
-  },
-  {
-    text: "Vues Totales",
-    title: "192",
-    icon: "flaticon-search-chart",
-  },
-  {
-    text: "Fiches service",
-    title: "438",
-    icon: "flaticon-review",
-  },
-  {
-    text: "Total des favoris",
-    title: "67",
-    icon: "flaticon-like",
-  },
-];
 
 const TopStateBlock = () => {
+  const dispatch = useDispatch();
+  const { offers } = useSelector((state) => state.offers);
+  const { formservice } = useSelector((state) => state.formservice);
+
+  const [offerCount, setOfferCount] = useState(0);
+  const [formserviceCount, setFormserviceCount] = useState(0);
+
+  useEffect(() => {
+    dispatch(fetchOffers());
+    dispatch(fetchAllFormservices());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (offers) {
+      setOfferCount(offers.length);
+    }
+  }, [offers]);
+
+  useEffect(() => {
+    if (formservice) {
+      setFormserviceCount(formservice.length);
+    }
+  }, [formservice]);
+
+  const statisticsData = [
+    {
+      text: "Total mes offres",
+      title: offerCount.toString(),
+      icon: "flaticon-home",
+    },
+    {
+      text: "Total demandes",
+      title: offerCount.toString(), // Adjust this if you have separate logic for counting demandes
+      icon: "flaticon-search-chart",
+    },
+    {
+      text: "Fiches service",
+      title: formserviceCount.toString(),
+      icon: "flaticon-review",
+    },
+    {
+      text: "Total des favoris",
+      title: "67", // Replace this with actual data if available
+      icon: "flaticon-like",
+    },
+  ];
+
   return (
     <>
       {statisticsData.map((data, index) => (

@@ -16,25 +16,36 @@ import { Link } from "react-router-dom";
 const ListeConseils = () => {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:3700/api/conseiljuridique"
-        );
-        console.log("API Response:", response);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3700/api/conseiljuridique"
+      );
+      console.log("API Response:", response);
 
-        if (Array.isArray(response)) {
-          console.log("API Response Data:", response);
-          setData(response);
-        } else {
-          console.error("Response data is not an array:", response);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
+      if (Array.isArray(response)) {
+        console.log("API Response Data:", response);
+        setData(response);
+      } else {
+        console.error("Response data is not an array:", response);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
+  const DeleteFunc = async(id) => {
+    try {
+      const response = await axios.delete(
+        "http://localhost:3700/api/conseiljuridique/"+id
+      ).then((res) => {
+        fetchData();
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  } 
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -64,7 +75,7 @@ const ListeConseils = () => {
       name: <span className="font-weight-bold fs-13">Action</span>,
       sortable: true,
 
-      cell: () => {
+      cell: (row) => {
         return (
           <UncontrolledDropdown className="dropdown d-inline-block">
             <DropdownToggle
@@ -75,16 +86,16 @@ const ListeConseils = () => {
             </DropdownToggle>
             <DropdownMenu className="dropdown-menu-end">
               <DropdownItem href="#">
-                <i className="ri-eye-fill align-bottom me-2 text-muted"></i>View
+                <i className="ri-eye-fill align-bottom me-2 text-muted"></i>Visualiser
               </DropdownItem>
               <DropdownItem className="edit-item-btn">
                 <i className="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                Edit
+                Modifier
               </DropdownItem>
-              <DropdownItem className="remove-item-btn">
+              <DropdownItem className="remove-item-btn"  onClick={() => {DeleteFunc(row._id)}}>
                 {" "}
                 <i className="ri-delete-bin-fill align-bottom me-2 text-muted"></i>{" "}
-                Delete{" "}
+                supprimer{" "}
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>

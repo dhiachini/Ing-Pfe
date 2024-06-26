@@ -3,7 +3,7 @@ const listings = [
 
     id: 1,
     image: "/images/listings/g1-3.jpg",
-    title: "Voiture commerciale",
+    title: "Agriculture",
     city:'Tbessa',location: "Algérie, Alg, Algé",
     descrip:'Machines et outils agricoles / Agents agricoles et sous-produits Stocks de produits agricoles',
     bed: "1",
@@ -34,9 +34,9 @@ const listings = [
 
     id: 2,
     image: "/images/listings/g1-3.jpg",
-    title: "Vêtements et mode",
+    title: "Industrie",
     city:'Los Angeles',location: "Los Angeles City, CA, USA",
-    descrip:'Agents de vêtements et de mode Stocks de vêtements / Vêtements de sport Produits ',
+    descrip:'Manufacture / Construction / Énergie ',
     lat: 34.1738017565271,
     long: -118.34227408812067,
     bed: "2",
@@ -64,9 +64,9 @@ const listings = [
   {
     id: 3,
     image: "/images/listings/g1-3.jpg",
-    title: "Construction et immobilier",
+    title: "Services",
     city:'Texas',location: "Texas City, CA, USA",
-    descrip:'Machines et outils agricoles / Agents agricoles et sous-produits Stocks de produits agricoles',
+    descrip:'Commerce / Tourisme / Hôtellerie',
 
     lat: 29.38690953884771,
     long: -94.91651439187791,
@@ -94,9 +94,9 @@ const listings = [
   {
     id: 4,
     image: "/images/listings/g1-4.jpg",
-    title: "Emballage et papier",
+    title: "Technologie",
     city:'New Jersey',location: "New Jersey City, CA, USA",
-    descrip:'Machines et outils agricoles / Agents agricoles et sous-produits Stocks de produits agricoles',
+    descrip:'Informatique/Télécommunications/ Biotechnologie',
     lat: 39.62158564223682,
     long: -80.15625432727268,
 
@@ -125,9 +125,9 @@ const listings = [
   {
     id: 5,
     image: "/images/listings/g1-3.jpg",
-    title: "Equestrian Family  Home",
+    title: "Santé",
     city:'San Diego',location: "San Diego City, CA, USA",
-
+    descrip:'Informatique/Télécommunications/ Biotechnologie',
     lat: 32.71210927454257,
     long: -117.1392712537564,
     bed: "5",
@@ -154,8 +154,9 @@ const listings = [
   {
     id: 6,
     image: "/images/listings/g1-3.jpg",
-    title: "Luxury villa in Rego Park",
-    city:'California',location: "California City, CA, USA",
+    title: "Transport",
+    city:'New Jersey',location: "New Jersey City, CA, USA",
+    descrip:'Air/Essence/Mer/Véhicule',
     lat: 32.740991655365605,
     long: -117.12965821740703,
     bed: "6",
@@ -183,8 +184,9 @@ const listings = [
   {
     id: 7,
     image: "/images/listings/g1-3.jpg",
-    title: "Equestrian Family  Home",
+    title: "Finance",
     city:'San Francisco',location: "San Francisco City, CA, USA",
+    descrip:'Banque/Investissement/Assurance',
     lat: 32.740991655365605,
     long: -117.12965821740703,
     bed: "3",
@@ -210,8 +212,9 @@ const listings = [
   {
     id: 8,
     image: "/images/listings/g1-4.jpg",
-    title: "Luxury villa in Rego Park",
+    title: "Éducation",
     city:'New York',location: "New York City, CA, USA",
+    descrip:'Écoles/Universités/Formation',
     lat: 40.7279707552121,
         long: -74.07152705896405,
     bed: "4",
@@ -239,6 +242,7 @@ const listings = [
     image: "/images/listings/g4-9.jpg",
     title: "Luxury villa in Rego Park",
     city:'Los Angeles',location: "Los Angeles City, CA, USA",
+    descrip:'Informatique/Télécommunications/ Biotechnologie',
     lat: 32.740991655365605,
     long: -117.12965821740703,
     bed: "2",
@@ -263,8 +267,9 @@ const listings = [
   {
     id: 10,
     image: "/images/listings/g4-10.jpg",
-    title: "Luxury villa in Rego Park",
+    title: "Transport",
     city:'New Jersey',location: "New Jersey City, CA, USA",
+    descrip:'Air/Essence/Mer/Véhicule',
     lat: 39.62158564223682,
     long: -75.15625432727268,
     bed: "1",

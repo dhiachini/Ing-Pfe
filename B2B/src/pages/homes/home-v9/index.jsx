@@ -1,3 +1,7 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 import Header from "@/components/home/home-v9/Header";
@@ -14,9 +18,20 @@ const metaInformation = {
 };
 
 const Home_V9 = () => {
+  const token = useSelector((state) => state.auth.token);
+
+  const handleProtectedLink = (href) => {
+    if (token) {
+      window.location.href = href;
+    } else {
+      toast.error("Vous devez vous connecter pour accéder à cette page");
+    }
+  };
+
   return (
     <>
       <MetaData meta={metaInformation} />
+      <ToastContainer />
       {/* Main Header Nav */}
       <Header />
       {/* End Main Header Nav */}
@@ -78,7 +93,7 @@ const Home_V9 = () => {
 
             <div className="col-lg-3">
               <div className="text-start text-lg-end mb-3">
-                <a className="ud-btn2" href="/categories">
+                <a className="ud-btn2" onClick={() => handleProtectedLink('/categories')}>
                   Voir toutes les catégories
                   <i className="fal fa-arrow-right-long" />
                 </a>

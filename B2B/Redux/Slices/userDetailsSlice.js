@@ -6,10 +6,11 @@ export const fetchUserDetails = createAsyncThunk(
   'userDetails/fetchUserDetails',
   async (_id, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`/api/offers/${offerID}/user-details`);
+      const response = await axios.get(`http://localhost:3700/api/offers/${_id}/user-details`);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      const response = await axios.get(`http://localhost:3700/api/demandes/${_id}/user-details`);
+      return response.data;
     }
   }
 );
@@ -29,7 +30,7 @@ const userDetailsSlice = createSlice({
       })
       .addCase(fetchUserDetails.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.user = state.action.payload;
+        state.user = action.payload;
       })
       .addCase(fetchUserDetails.rejected, (state, action) => {
         state.status = 'failed';

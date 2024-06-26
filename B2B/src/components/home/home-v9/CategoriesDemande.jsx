@@ -6,6 +6,7 @@ import Footer from "@/components/property/dashboard/Footer";
 import ListingsCategoriesDemande from "@/components/property/dashboard/dashboard-my-favourites/ListingsCategoriesDemande";
 import SidebarDashboard from "@/components/property/dashboard/SidebarDashboard";
 import MetaData from "@/components/common/MetaData";
+import DashboardHeader from "@/components/common/DashboardHeader";
 
 const metaInformation = {
   title: "Catégories offres || Plateforme d'échange Algéro - Tunisienne",
@@ -16,7 +17,7 @@ const CategoriesDemande = () => {
     <>
     <MetaData meta={metaInformation} />
       {/* Main Header Nav */}
-      <Header />
+      <DashboardHeader />
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}
@@ -38,7 +39,7 @@ const CategoriesDemande = () => {
               <div className="row align-items-center pb40">
                 <div className="col-lg-12">
                   <div className="dashboard_title_area">
-                    <h2>Toutes les catégories (demande)</h2>
+                    <h2>Toutes les catégories</h2>
                     
                   </div>
                 </div>

@@ -10,7 +10,7 @@ const ContactWithAgent = ({ id }) => {
 
   useEffect(() => {
     dispatch(fetchUserDetails(id));
-  }, [dispatch, user]);
+  }, []);
 
   console.log("The user details is:", user);
   console.log("Status:", status);
@@ -29,23 +29,23 @@ const ContactWithAgent = ({ id }) => {
       {user && (
         <div className="agent-single d-sm-flex align-items-center pb25">
           <div className="single-contant ml20 ml0-xs">
-            <h6 className="title mb-1">{user.Fullname}</h6>
+            <h6 className="title mb-1">{user?.Fullname}</h6>
             <div className="agent-meta mb10 d-md-flex align-items-center">
               <a
                 className="text fz15"
-                href={`tel:${user.Telephonecode}${user.Phonenumber}`}
+                href={`tel:${user.Telephonecode}${user?.Phonenumber}`}
               >
-                <i className="flaticon-call pe-1" />({user.Telephonecode}){" "}
+                <i className="flaticon-call pe-1" />({user?.Telephonecode}){" "}
                 {user.Phonenumber}
               </a>
             </div>
             <div className="agent-meta mb10 d-md-flex align-items-center">
               <a
                 className="text fz15"
-                href={`mailto:${user.Professionalemail}`}
+                href={`mailto:${user?.Professionalemail}`}
               >
                 <i className="flaticon-email pe-1" />
-                {user.Professionalemail}
+                {user?.Professionalemail}
               </a>
             </div>
           </div>

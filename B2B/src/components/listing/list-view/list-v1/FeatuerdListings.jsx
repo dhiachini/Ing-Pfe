@@ -23,6 +23,16 @@ const FeaturedListings = ({ colstyle }) => {
     pageNumber * pageCapacity
   );
 
+  const MAX_DESCRIPTION_LENGTH = 100; // Maximum number of characters to display
+
+const truncateDescription = (description) => {
+  if (description.length <= MAX_DESCRIPTION_LENGTH) {
+    return description;
+  }
+  return description.substring(0, MAX_DESCRIPTION_LENGTH) + '...';
+};
+
+
   return (
     <>
       <div className="row">
@@ -60,12 +70,11 @@ const FeaturedListings = ({ colstyle }) => {
               </div>
               <div className="list-content">
                 <h6 className="list-title">
-                  <Link to={`/detailsoffre`}>{listing.title}</Link>
+                <Link to={`/detailsoffre/${listing._id}`}>{listing.title}</Link>
                 </h6>
 
                 <p className="list-text2">
-                  An exceptional exclusive five bedroom apartment for sale in this
-                  much sought after development in Knightsbridge.
+                {truncateDescription(listing.description)}
                 </p>
                 <p className="list-text">
                   Date de publication : {new Date(listing.createdAt).toLocaleDateString()}

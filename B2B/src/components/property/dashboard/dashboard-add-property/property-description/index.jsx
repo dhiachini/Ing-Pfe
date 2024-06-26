@@ -7,12 +7,23 @@ const PropertyDescription = ({ updateForm, s, n, f }) => {
   const dispatch = useDispatch();
   const categoryOptions = [
     { value: "Agriculture", label: "Agriculture" },
-    { value: "Vêtements et mode", label: "Vêtements et mode" },
-    {
-      value: "Construction et immobilier",
-      label: "Construction et immobilier",
-    },
-    { value: "Emballage et papier", label: "Emballage et papier" },
+    { value: "Industrie",label: "Industrie",},
+    { value: "Services", label: "Services" },
+    { value: "Technologie", label: "Technologie" },
+    { value: "Santé", label: "Santé" },
+    { value: "Transport", label: "Transport" },
+  
+    
+  ];
+  const subcategoryOptions = [
+    { value: "Cultures", label: "Cultures" },
+    { value: "Manufacture",label: "Manufacture",},
+    { value: "Commerce", label: "Commerce" },
+    { value: "Informatique", label: "Informatique" },
+    { value: "Médecine", label: "Médecine" },
+    { value: "Air", label: "Air" },
+ 
+    
   ];
   const listedIn = [
     { value: "À vendre", label: "À vendre" },
@@ -155,7 +166,7 @@ const PropertyDescription = ({ updateForm, s, n, f }) => {
             <div className="location-area">
               <Select
                 name="subcategory"
-                options={categoryOptions}
+                options={subcategoryOptions}
                 styles={customStyles}
                 className="select-custom pl-0"
                 classNamePrefix="select"
@@ -212,7 +223,8 @@ const PropertyDescription = ({ updateForm, s, n, f }) => {
         <div className="col-sm-6 col-xl-4">
           <div className="mb30">
             <label className="heading-color ff-heading fw600 mb10">
-              {form.transactionType && form.transactionType.label === "Investissement"
+              {form.transactionType &&
+              form.transactionType.label === "Investissement"
                 ? "Capital"
                 : form.country && form.country.label === "Algérie"
                 ? "Prix en DZD"
@@ -222,7 +234,8 @@ const PropertyDescription = ({ updateForm, s, n, f }) => {
               type="text"
               className="form-control"
               placeholder={
-                form.transactionType && form.transactionType.label === "Investissement"
+                form.transactionType &&
+                form.transactionType.label === "Investissement"
                   ? "Entrer votre Capital"
                   : "Entrer le prix"
               }

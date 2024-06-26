@@ -24,11 +24,11 @@ const ListingsFavourites = () => {
           <div className="col-md-6 col-lg-4 col-xl-3" key={listing.id}>
             <div className="listing-style1 style2">
               <div className="list-thumb">
-                <img
+                {/* <img
                   className="w-100 h-100 cover"
                   src={listing.image}
                   alt="listings"
-                />
+                /> */}
                 <div className="list-price">
                   {listing.price} <span>Offres</span>
                 </div>

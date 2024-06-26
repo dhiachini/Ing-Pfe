@@ -1,35 +1,45 @@
+import Select from "react-select";
 
-
-import React from "react";
-
-const Bathroom = ({filterFunctions}) => {
-  const options = [
-    { id: "bathany", label: "any", defaultChecked: true ,value:0},
-    { id: "bathoneplus", label: "1+",value:1 },
-    { id: "bathtwoplus", label: "2+" ,value:2},
-    { id: "baththreeplus", label: "3+",value:3 },
-    { id: "bathfourplus", label: "4+",value:4 },
-    { id: "bathfiveplus", label: "5+",value:5 },
+const Bathroom = ({ filterFunctions }) => {
+  const subcategoryOptions = [
+    { value: "Cultures", label: "Cultures" },
+    { value: "Manufacture", label: "Manufacture" },
+    { value: "Commerce", label: "Commerce" },
+    { value: "Informatique", label: "Informatique" },
+    { value: "Télécommunications", label: "Télécommunications" },
+    { value: "Biotechnologie", label: "Biotechnologie" },
   ];
 
+  const customStyles = {
+    option: (styles, { isFocused, isSelected, isHovered }) => {
+      return {
+        ...styles,
+        backgroundColor: isSelected
+          ? "#eb6753"
+          : isHovered
+          ? "#eb675312"
+          : isFocused
+          ? "#eb675312"
+          : undefined,
+      };
+    },
+  };
+
   return (
-    <>
-      {options.map((option) => (
-        <div className="selection" key={option.id}>
-          <input
-            id={option.id}
-        
-            type="radio"
-            checked={filterFunctions?.bathroms == option.value}
-            
-            onChange={()=>filterFunctions?.handlebathroms(option.value)}
-            
-          />
-          <label htmlFor={option.id}>{option.label}</label>
-        </div>
-      ))}
-    </>
+    <Select
+      defaultValue={[subcategoryOptions[0]]}
+      name="colors"
+      styles={customStyles}
+      options={subcategoryOptions}
+      value={{
+        value: filterFunctions.location,
+        label: filterFunctions.location,
+      }}
+      className="select-custom filterSelect"
+      classNamePrefix="select"
+      onChange={(e) => filterFunctions?.handlelocation(e.value)}
+      required
+    />
   );
 };
-
 export default Bathroom;

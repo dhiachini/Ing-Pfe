@@ -4,16 +4,20 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 import axios from "axios";
 import Pagination from "@/components/property/Pagination";
 
-
-
-const TextesJuridiqueDataTable = ({ currentPage, totalPages, handlePageClick }) => {
+const TextesJuridiqueDataTable = ({
+  currentPage,
+  totalPages,
+  handlePageClick,
+}) => {
   const [textesJuridiques, setTextesJuridiques] = useState([]);
   const itemsPerPage = 5; // Number of items to display per page
 
   useEffect(() => {
     const fetchTextesJuridiques = async () => {
       try {
-        const response = await axios.get(`http://localhost:3700/api/textejuridique`);
+        const response = await axios.get(
+          `http://localhost:3700/api/textejuridique`
+        );
         setTextesJuridiques(response.data); // Assuming response.data is an array of objects
       } catch (error) {
         console.error("Error fetching textes juridiques:", error);
@@ -30,7 +34,9 @@ const TextesJuridiqueDataTable = ({ currentPage, totalPages, handlePageClick }) 
 
   const handleDownload = async (texte) => {
     try {
-      const response = await axios.get(`http://localhost:3700/api/textejuridique/${texte._id}/download`);
+      const response = await axios.get(
+        `http://localhost:3700/api/textejuridique/${texte._id}/download`
+      );
       const fileUrl = response.data.fileUrl;
 
       // Open the file in a new tab
@@ -93,8 +99,10 @@ const TextesJuridiqueDataTable = ({ currentPage, totalPages, handlePageClick }) 
       </table>
 
       <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
+        currentPage={1}
+        totalPages={
+          textesJuridiques.length / 10 > 10 ? textesJuridiques.length / 10 : 1
+        }
         handlePageClick={handlePageClick}
       />
     </>

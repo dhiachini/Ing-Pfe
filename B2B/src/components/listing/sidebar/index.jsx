@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import SearchBox from "./SearchBox";
 import ListingStatus from "./ListingStatus";
@@ -16,7 +14,7 @@ const ListingSidebar = ({filterFunctions}) => {
   return (
     <div className="list-sidebar-style1">
       <div className="widget-wrapper">
-        <h6 className="list-title">Rechercher offre dans nom catégorie</h6> 
+        <h6 className="list-title">Rechercher des annonces </h6> 
         {/* nom catégorie */}
         <SearchBox filterFunctions={filterFunctions} />
       </div>
@@ -73,7 +71,7 @@ const ListingSidebar = ({filterFunctions}) => {
       <div className="widget-wrapper advance-feature-modal">
         <h6 className="list-title">Sous catégorie</h6>
         <div className="form-style2 input-group">
-          <Location filterFunctions={filterFunctions} />
+          <Bathroom filterFunctions={filterFunctions} />
         </div>
       </div>
       {/* End .widget-wrapper */}

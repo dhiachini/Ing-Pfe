@@ -53,12 +53,12 @@ const OfferDetails = () => {
                 </div>
               </div>
 
-              <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <h4 className="title fz17 mb30">Leave A Review</h4>
                 <div className="row">
                   <ReviewBoxForm />
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="col-lg-4">
@@ -75,7 +75,7 @@ const OfferDetails = () => {
             </div>
           </div>
 
-          <div className="row mt30 align-items-center justify-content-between">
+          {/* <div className="row mt30 align-items-center justify-content-between">
             <div className="col-auto">
               <div className="main-title">
                 <h2 className="title">Découvrez nos annonces en vedette</h2>
@@ -83,9 +83,9 @@ const OfferDetails = () => {
                   Aliquam lacinia diam quis lacus euismod
                 </p>
               </div>
-            </div>
+            </div> */}
 
-            <div className="col-auto mb30">
+            {/* <div className="col-auto mb30">
               <div className="row align-items-center justify-content-center">
                 <div className="col-auto">
                   <button className="featured-prev__active swiper_button">
@@ -103,16 +103,16 @@ const OfferDetails = () => {
                   </button>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
 
-          <div className="row">
+          {/* <div className="row">
             <div className="col-lg-12">
               <div className="property-city-slider">
                 <NearbySimilarProperty />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 

@@ -213,9 +213,16 @@ export const fetchSingleOffer = (offerId) => async (dispatch, getState) => {
     dispatch({ type: FETCH_SINGLE_OFFER_REQUEST, payload: offerId });
     // dispatch({ type: FETCH_SINGLE_OFFER_SUCCESS, payload: response.data });
   } catch (error) {
-    dispatch({
-      type: FETCH_SINGLE_OFFER_FAILURE,
-      payload: error.response && error.response.data.message ? error.response.data.message : "Failed to fetch offer",
-    });
+    const { auth: { token } } = getState();
+    const config = { headers: { "x-auth-token": token } };
+
+    const response = await axios.get(`http://localhost:3700/api/demandes/${offerId}`, config);
+    console.log("Fetched single demande response:", response.data);
+    dispatch({ type: FETCH_SINGLE_OFFER_REQUEST, payload: offerId });
+
+    // dispatch({
+    //   type: FETCH_SINGLE_OFFER_FAILURE,
+    //   payload: error.response && error.response.data.message ? error.response.data.message : "Failed to fetch offer",
+    // });
   }
 };
