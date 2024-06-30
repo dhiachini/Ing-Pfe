@@ -21,7 +21,7 @@ const Creators = () => {
                         <Col className="col-sm">
                             <div className="d-flex justify-content-sm-end gap-2">
                                 <div className="search-box ms-2">
-                                    <input type="text" className="form-control" placeholder="Search..." />
+                                    <input type="text" className="form-control" placeholder="Recherche..." />
                                     <i className="ri-search-line search-icon"></i>
                                 </div>
                                 <div className="choices">

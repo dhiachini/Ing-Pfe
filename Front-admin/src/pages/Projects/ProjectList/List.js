@@ -73,7 +73,7 @@ const List = () => {
                 <div className="col-sm-3 ms-auto">
                     <div className="d-flex justify-content-sm-end gap-2">
                         <div className="search-box ms-2 col-sm-7">
-                            <Input type="text" className="form-control" placeholder="Search..." />
+                            <Input type="text" className="form-control" placeholder="Recherche..." />
                             <i className="ri-search-line search-icon"></i>
                         </div>
 

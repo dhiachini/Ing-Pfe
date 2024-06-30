@@ -247,6 +247,7 @@ import AjouterTexteJuridique from "../gestion-client/AjouterTexteJuridique";
 import AjouterConseilJuridique from "../gestion-client/AjouterConseilJuridique";
 import ListeTextes from "../gestion-client/ListeTextes";
 import ListeConseils from "../gestion-client/ListeConseils";
+import DetailsFicheservice from "../gestion-client/DetailsFicheservice";
 
 const authProtectedRoutes = [
   { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
@@ -261,6 +262,7 @@ const authProtectedRoutes = [
   { path: "/listeficheservice", component: <ListeFicheservice /> },
   { path: "/listetextesjuridique", component: <ListeTextes /> },
   { path: "/listeconseilsjuridique", component: <ListeConseils /> },
+  { path: "/detailsficheservices/:id", component: <DetailsFicheservice /> },
 
   
   { path: "/dashboard", component: <DashboardEcommerce /> },

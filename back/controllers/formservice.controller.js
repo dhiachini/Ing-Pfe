@@ -1,5 +1,6 @@
 const Formservice = require("../models/formservice.models");
 const jwt = require("jsonwebtoken");
+const AccountRequest = require("../models/accountrequest.model");
 
 // Function to extract userID from JWT token
 const extractUserID = (req) => {
@@ -123,11 +124,65 @@ const findSingleFormservice = async (req, res) => {
   }
 };
 
+// Find single formservice without auth
+const findSingleFormserviceWtauth = async (req, res) => {
+  try {
+    
+    const formservice = await Formservice.findOne({
+      _id: req.params.id,
+    });
+    if (!formservice) {
+      return res
+        .status(404)
+        .json({ message: "Formservice not found or unauthorized" });
+    }
+    res.status(200).json(formservice);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
 // Find all Formserices for all users
 const findAllFormsericesForAllUsers = async (req, res) => {
   try {
     const formservice = await Formservice.find({});
     res.status(200).json(formservice);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+
+// Get user details from formservice ID
+const getUserDetailsFromFormservice = async (req, res) => {
+  try {
+    const formserviceID = req.params.id;
+
+    // Fetch the formservice by ID
+    const formservice = await Formservice.findById(formserviceID);
+    if (!formservice) {
+      return res.status(404).json({ message: "Formservice not found" });
+    }
+
+    const userID = formservice.userID;
+
+    // Fetch the account request details for the userID
+    const user = await AccountRequest.findById(userID);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const userDetails = {
+      Fullname: user.Fullname,
+      Professionalemail: user.Professionalemail,
+      Telephonecode: user.Telephonecode,
+      Phonenumber: user.Phonenumber,
+      Companyname: user.Companyname,
+    };
+
+    res.status(200).json(userDetails);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Server error" });
@@ -140,5 +195,7 @@ module.exports = {
   updateFormservice,
   findAllFormservices,
   findSingleFormservice,
+  findSingleFormserviceWtauth,
   findAllFormsericesForAllUsers,
+  getUserDetailsFromFormservice,
 };

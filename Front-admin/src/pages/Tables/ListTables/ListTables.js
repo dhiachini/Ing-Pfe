@@ -107,7 +107,7 @@ const ListTables = () => {
                                             <Col className="col-sm">
                                                 <div className="d-flex justify-content-sm-end">
                                                     <div className="search-box ms-2">
-                                                        <input type="text" className="form-control search" placeholder="Search..." />
+                                                        <input type="text" className="form-control search" placeholder="Recherche..." />
                                                         <i className="ri-search-line search-icon"></i>
                                                     </div>
                                                 </div>

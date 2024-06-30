@@ -164,7 +164,7 @@ class DualListbox extends Component {
 
                     return new RegExp(filterInput, "i").test(Optgroup.label);
                   }}
-                  filterPlaceholder="Search..."
+                  filterPlaceholder="Recherche..."
                   options={Optgroup}
                   selected={selectedFilter}
                   onChange={this.onFilterChange}
@@ -239,7 +239,7 @@ class DualListbox extends Component {
 
                     return new RegExp(filterInput, "i").test(Optgroup.label);
                   }}
-                  filterPlaceholder="Search..."
+                  filterPlaceholder="Recherche..."
                   disabled={true}
                   options={Optgroup}
                   selected={selectedFilter}
@@ -277,7 +277,7 @@ class DualListbox extends Component {
 
                     return new RegExp(filterInput, "i").test(Optgroup.label);
                   }}
-                  filterPlaceholder="Search..."
+                  filterPlaceholder="Recherche..."
                   options={Optgroup}
                   selected={selectedPreserve}
                   onChange={this.onPreserveChange}
@@ -316,7 +316,7 @@ class DualListbox extends Component {
 
                     return new RegExp(filterInput, "i").test(Optgroup.label);
                   }}
-                  filterPlaceholder="Search..."
+                  filterPlaceholder="Recherche..."
                   allowDuplicates
                   preserveSelectOrder
                   options={Optgroup}

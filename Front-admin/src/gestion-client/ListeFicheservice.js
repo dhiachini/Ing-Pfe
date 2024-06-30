@@ -49,24 +49,24 @@ const ListeFicheservice = () => {
       sortable: true,
     },
     {
-      name: <span className="font-weight-bold fs-13">Adresse de prestation</span>,
+      name: (
+        <span className="font-weight-bold fs-13">Adresse de prestation</span>
+      ),
       selector: (row) => row.prestationadress,
       sortable: true,
     },
 
-   
     {
       name: <span className="font-weight-bold fs-13">Type de service</span>,
       selector: (row) => row.servicetype,
       sortable: true,
     },
-   
 
     {
       name: <span className="font-weight-bold fs-13">Action</span>,
       sortable: true,
 
-      cell: () => {
+      cell: (row) => {
         return (
           <UncontrolledDropdown className="dropdown d-inline-block">
             <DropdownToggle
@@ -76,17 +76,17 @@ const ListeFicheservice = () => {
               <i className="ri-more-fill align-middle"></i>
             </DropdownToggle>
             <DropdownMenu className="dropdown-menu-end">
-              <DropdownItem href="#">
-                <i className="ri-eye-fill align-bottom me-2 text-muted"></i>View
+              <DropdownItem className="dropdown-item">
+                <Link to={`/detailsficheservices/${row._id}`}>
+                  <i className="ri-eye-fill align-bottom me-2 text-muted"></i>{" "}
+                  Visualiser
+                </Link>
               </DropdownItem>
-              <DropdownItem className="edit-item-btn">
-                <i className="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                Edit
-              </DropdownItem>
+
               <DropdownItem className="remove-item-btn">
                 {" "}
                 <i className="ri-delete-bin-fill align-bottom me-2 text-muted"></i>{" "}
-                Delete{" "}
+                Supprimer{" "}
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
